@@ -1,6 +1,5 @@
 package de.jhs.oldenburg.gg.rdf.manager;
 
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
