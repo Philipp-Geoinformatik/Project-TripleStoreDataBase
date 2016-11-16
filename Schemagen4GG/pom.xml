@@ -14,71 +14,46 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
+				<groupId>org.apache.jena</groupId>
+				<artifactId>jena-maven-tools</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<includes>
+						<include>src/main/vocabs/*.ttl</include>
+						<!-- include>src/main/vocabs/foaf.rdf</include -->
+					</includes>
+					<fileOptions>
+						<source>
+							<input>default</input>
+							<package-name>org.example.test</package-name>
+						</source>
+						<source>
+							<!-- Test2.java (only) will contain OntModel declarations -->
+							<input>src/main/vocabs/owl.ttl</input>
+							<ontology>true</ontology>
+						</source>
+					</fileOptions>
+				</configuration>
 				<executions>
 					<execution>
-						<phase>generate-sources</phase>
+						<id>schemagen</id>
 						<goals>
-							<goal>java</goal>
+							<goal>translate</goal>
 						</goals>
-						<configuration>
-							<mainClass>jena.schemagen</mainClass>
-							<commandlineArgs>
-								--inference \
-								-i ${basedir}/resources/example.ttl \
-								-e TTL \
-								--package org.example.ont \
-								-o ${project.build.directory}/generated-sources/java \
-								-n ExampleOnt
-							</commandlineArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources/java</source>
-							</sources>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
 
-
-
-
-
-
-
-
 	<dependencies>
 		<dependency>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>jaxb2-maven-plugin</artifactId>
-			<version>2.2</version>
-			<type>maven-plugin</type>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>jena-core</artifactId>
+			<version>3.1.1</version>
 		</dependency>
 	</dependencies>
 </project>
