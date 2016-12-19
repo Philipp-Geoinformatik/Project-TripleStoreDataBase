@@ -3,11 +3,15 @@ package de.jhs.oldenburg.gg.tdb.manager;
 import java.io.File;
 
 import org.apache.jena.query.Dataset;
+import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ReadWrite;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
@@ -15,6 +19,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.tdb.StoreConnection;
 import org.apache.jena.tdb.TDBFactory;
 
 /**
@@ -29,14 +34,14 @@ public class TDBManager implements ITDBManager {
 	public static void main(String[] args) {
 		TDBManager a = new TDBManager();
 		a.createOrConnectTDB("TestFolder", "myTDB");
-
 		// Insert SCHEMA into database
-		// File f = new File("RDF_Files/owl.ttl");
+		File f = new File("RDF_Files/friends.owl");
 		//
-		// a.insertDataFromFile(f, "TTL");
+		System.out.println(f.getAbsoluteFile().getAbsolutePath());
+		// a.insertDataFromFile(f, "OWL");
 		// a.printRDFContent();
-		a.makeSPARQLReq("SELECT * {?s ?p ?o} ");
-		// a.testReadingData();
+		// a.makeSPARQLReq("SELECT  *  {?s ?p ?o} ");
+		a.resolveCompound("prefix pers: <file:///C:/Users/Philipp/git/Project-TripleStoreDataBase/RDF_Creation/RDF_Files/>" + "  select ?subject where { ?subject pers:* ?subject.}");
 	}
 
 	@Override
@@ -50,15 +55,31 @@ public class TDBManager implements ITDBManager {
 		// erstelle ein dataset
 		Dataset dataset = TDBFactory.createDataset(datasetLocation + "/" + datasetName);
 		this.dataset = dataset;
+		// System.out.println(dataset.getContext());
 		return dataset;
 	}
 
 	@Override
 	public boolean insertDataFromFile(File file, String fileType) {
-		boolean transactionSucess = true;
-		Model model = RDFDataMgr.loadModel("RDF_Files/owl.ttl");
-		dataset.getDefaultModel().add(model);
+		boolean transactionSucess = false;
+		try {
+			Model model = RDFDataMgr.loadModel(file.getAbsolutePath());
+			Model m = dataset.getDefaultModel().add(model);
+			transactionSucess = true;
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		return transactionSucess;
+	}
+
+	public void deleteModel() {
+		if (dataset != null) {
+			Model m = dataset.getDefaultModel();
+			m.remove(m);
+		} else {
+			System.out.println("Cannot find any RDF-model!");
+		}
+
 	}
 
 	/**
@@ -109,13 +130,45 @@ public class TDBManager implements ITDBManager {
 	@Override
 	public String makeSPARQLReq(String query) {
 		dataset.begin(ReadWrite.READ);
+
 		try (QueryExecution qExec = QueryExecutionFactory.create(query, dataset)) {
 			ResultSet rs = qExec.execSelect();
 			ResultSetFormatter.out(rs);
 		} finally {
 			dataset.end();
 		}
-
 		return null;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean resolveCompound() {
+		boolean result = false;
+		// building the query
+		String queryString = "";
+		Query query = QueryFactory.create(queryString);
+		// requesting the compound instance
+		if (dataset != null) {
+			dataset.begin(ReadWrite.READ);
+			// get the existing model
+			Model model = dataset.getDefaultModel();
+			// Execute query
+			try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
+				ResultSet results = qexec.execSelect();
+				// for (; results.hasNext();) {
+				QuerySolution soln = results.nextSolution();
+				System.out.println(soln);
+				ResultSetFormatter.out(System.out, results, query);
+				// }
+			} finally {
+				dataset.end();
+			}
+
+		}
+		// resolve answer
+
+		return result;
 	}
 }
