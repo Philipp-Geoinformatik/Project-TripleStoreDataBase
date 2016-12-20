@@ -18,8 +18,8 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
+import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.tdb.StoreConnection;
 import org.apache.jena.tdb.TDBFactory;
 
 /**
@@ -37,11 +37,11 @@ public class TDBManager implements ITDBManager {
 		// Insert SCHEMA into database
 		File f = new File("RDF_Files/friends.owl");
 		//
-		System.out.println(f.getAbsoluteFile().getAbsolutePath());
-		// a.insertDataFromFile(f, "OWL");
+		// System.out.println(f.getAbsoluteFile().getAbsolutePath());
+		a.insertDataFromFile(f, "OWL");
 		// a.printRDFContent();
 		// a.makeSPARQLReq("SELECT  *  {?s ?p ?o} ");
-		a.resolveCompound("prefix pers: <file:///C:/Users/Philipp/git/Project-TripleStoreDataBase/RDF_Creation/RDF_Files/>" + "  select ?subject where { ?subject pers:* ?subject.}");
+		a.resolveCompound("prefix pers: <file:///C:/Users/Philipp/git/Project-TripleStoreDataBase/RDF_Creation/RDF_Files/> select  distinct ?subject where { ?subject a ?o.}");
 	}
 
 	@Override
@@ -127,6 +127,69 @@ public class TDBManager implements ITDBManager {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean resolveCompound(String queryString) {
+		boolean result = false;
+		// building the query
+
+		Query query = QueryFactory.create(queryString);
+		// requesting the compound instance
+		if (dataset != null) {
+			dataset.begin(ReadWrite.READ);
+			// get the existing model
+			Model model = dataset.getDefaultModel();
+			// Execute query
+			try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
+				// StmtIterator it =
+				ResultSet results = qexec.execSelect();
+				// Model m = qexec.execConstruct();
+
+				for (; results.hasNext();) {
+					QuerySolution soln = results.nextSolution();
+					// Access variables: 
+					RDFNode s = soln.get("?subject"); //
+					RDFNode c = soln.get("?subject"); //
+														
+					// If you need to test the thing returned
+					if (s.isLiteral())
+						((Literal) s).getLexicalForm();
+					else if (s.isResource()) {
+						Resource r = (Resource) s;
+						System.out.println(r);
+						if (!r.isAnon()) {
+							r.getURI();
+						}
+					}
+				}
+				System.out.println("==================================");
+				System.out.println("==================================");
+
+				// ========================================
+				/*
+				 * StmtIterator it =
+				 * qexec.getDataset().getDefaultModel().listStatements(); while
+				 * (it.hasNext()) { Statement stmt = it.nextStatement(); // get
+				 * next statement Resource s = stmt.getSubject(); // get the
+				 * subject Property p = stmt.getPredicate(); // get the RDFNode
+				 * o = stmt.getObject(); // get the object if (s instanceof
+				 * Resource) { System.out.println(" object( " + s.toString() +
+				 * " )"); } }
+				 */
+
+			} finally {
+				dataset.end();
+			}
+		}
+		// resolve answer
+		return result;
+	}
+
+	/**
+	 * 
+	 */
 	@Override
 	public String makeSPARQLReq(String query) {
 		dataset.begin(ReadWrite.READ);
@@ -138,37 +201,5 @@ public class TDBManager implements ITDBManager {
 			dataset.end();
 		}
 		return null;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean resolveCompound() {
-		boolean result = false;
-		// building the query
-		String queryString = "";
-		Query query = QueryFactory.create(queryString);
-		// requesting the compound instance
-		if (dataset != null) {
-			dataset.begin(ReadWrite.READ);
-			// get the existing model
-			Model model = dataset.getDefaultModel();
-			// Execute query
-			try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
-				ResultSet results = qexec.execSelect();
-				// for (; results.hasNext();) {
-				QuerySolution soln = results.nextSolution();
-				System.out.println(soln);
-				ResultSetFormatter.out(System.out, results, query);
-				// }
-			} finally {
-				dataset.end();
-			}
-
-		}
-		// resolve answer
-
-		return result;
 	}
 }

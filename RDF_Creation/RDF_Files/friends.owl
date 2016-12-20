@@ -1,0 +1,26 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie zum testen der rekursiven Abfrage durch ein Javaprogramm</rdfs:comment>
+        <owl:versionInfo>v0.1</owl:versionInfo>
+    </owl:Ontology>
+
+    <owl:Class rdf:about="Mensch">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    </owl:Class>
+
+    <owl:Class rdf:about="Person">
+        <rdfs:subClassOf rdf:resource="Mensch" />
+    </owl:Class>
+
+    <owl:Class rdf:about="Frau">
+        <rdfs:subClassOf rdf:resource="Person" />
+    </owl:Class>
+
+    <owl:Class rdf:about="Mann">
+        <rdfs:subClassOf rdf:resource="Person" />
+    </owl:Class>
+
+<Peter rdf:about="Mann"/>
+
+</rdf:RDF>
