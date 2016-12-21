@@ -16,5 +16,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib-src/jena-arq-3.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib-src/jena-cmds-3.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib-src/jena-core-3.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib-src/jena-tdb-3.1.1-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
