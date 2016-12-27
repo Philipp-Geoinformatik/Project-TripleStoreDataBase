@@ -1,0 +1,152 @@
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
+        <owl:versionInfo>v1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://www.example.org/foo" />
+        <owl:priorVersion rdf:resource="http://ontoware.org/projects/swrc" />
+    </owl:Ontology>
+
+    <!-- Voraussetzung -->
+    <jhs:Voraussetzung rdf:about="http://www.jade-hs.de/Voraussetzung/Voraussetzung_1">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/UndOperator/UndOperator_1" />
+    </jhs:Voraussetzung>
+    <!-- UND -->
+    <jhs:UndOperator rdf:about="http://www.jade-hs.de/UndOperator/UndOperator_1">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/NichtOperator/NichtOperator_1" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/UndOperator/UndOperator_2" />
+    </jhs:UndOperator>
+    <!-- NICHT -->
+    <jhs:NichtOperator rdf:about="http://www.jade-hs.de/NichtOperator/NichtOperator_1">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/OderOperator/OderOperator_1" />
+    </jhs:NichtOperator>
+    <!-- ODER -->
+    <jhs:OderOperator rdf:about="http://www.jade-hs.de/OderOperator/OderOperator_1">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_1" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_2" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_3" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_4" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_5" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_6" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_7" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_8" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_9" />
+    </jhs:OderOperator>
+    <!-- KfW_Foerderprogramm_271 -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_1">
+        <jhs:Name>Foerderprogramm271</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- KfW_Foerderprogramm_151 -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_2">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:Name>Foerderprogramm151</jhs:Name>
+    </jhs:Existenzbedingung>
+    <!-- KfW_Foerderprogramm_152 -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_3">
+        <jhs:Name>Foerderprogramm152</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- Foerderung_Durch_Land -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_4">
+        <jhs:Name>FoerderungDurchLand</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- Anlagen_ErneuerbareEnergie -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_5">
+        <jhs:Name>AnlagenFuerErneurerbareEnergie</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- Ferienwohnung -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_6">
+        <jhs:Name>Ferienwohnung</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- Ferienhaus -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_7">
+        <jhs:Name>Ferienhaus</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- Wochenendhaus -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_8">
+        <jhs:Name>Wochenendhaus</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- Bordinghaus -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_9">
+        <jhs:Name>Bordinghaus</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- UND -->
+    <jhs:UndOperator rdf:about="http://www.jade-hs.de/UndOperator/UndOperator_2">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/MaxOperator/MaxOperator_1" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/OderOperator/OderOperator_2" />
+    </jhs:UndOperator>
+    <!-- MAX -->
+    <jhs:MaxOperator rdf:about="http://www.jade-hs.de/MaxOperator/MaxOperator_1">
+        <jhs:Name>Bauantrag</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:vergleichtMit rdf:resource="http://www.jade-hs.de/Vergleichswert/Vergleichswert_1" />
+    </jhs:MaxOperator>
+    <!-- Bauantrag _ 01.02.2002 -->
+    <jhs:Vergleichswert rdf:about="http://www.jade-hs.de/Vergleichswert/Vergleichswert_1">
+        <jhs:Wert>01.02.2002</jhs:Wert>
+    </jhs:Vergleichswert>
+    <!-- ODER -->
+    <jhs:OderOperator rdf:about="http://www.jade-hs.de/OderOperator/OderOperator_2">
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_10" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/MaxOperator/MaxOperator_2" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/MaxOperator/MaxOperator_3" />
+    </jhs:OderOperator>
+    <!-- EigenstumswohnungInWohneinheit -->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/Existenzbedingung/Existenzbedingung_10">
+        <jhs:Name>EigentumswohnungInWohneinheit</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+    </jhs:Existenzbedingung>
+    <!-- MAX -->
+    <jhs:MaxOperator rdf:about="http://www.jade-hs.de/MaxOperator/MaxOperator_2">
+        <jhs:Name>Einfamilienhaus</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:vergleichtMit rdf:resource="http://www.jade-hs.de/Vergleichswert/Vergleichswert_2" />
+    </jhs:MaxOperator>
+    <!-- Einfamilienhaus _ zweiWohneinheiten -->
+    <jhs:Vergleichswert rdf:about="http://www.jade-hs.de/Vergleichswert/Vergleichswert_2">
+        <jhs:Wert>zweiWohneinheiten</jhs:Wert>
+    </jhs:Vergleichswert>
+    <!-- MAX -->
+    <jhs:MaxOperator rdf:about="http://www.jade-hs.de/MaxOperator/MaxOperator_3">
+        <jhs:Name>Zweifamilienhaus</jhs:Name>
+        <jhs:Ergebnis>false</jhs:Ergebnis>
+        <jhs:vergleichtMit rdf:resource="http://www.jade-hs.de/Vergleichswert/Vergleichswert_2" />
+    </jhs:MaxOperator>
+
+    <!-- Zweifamilienhaus _ zweiWohneinheiten -->
+
+    <!-- Voraussetzung -->
+    <!-- UND -->
+    <!-- NICHT -->
+    <!-- ODER -->
+    <!-- KfW_Foerderprogramm_271 -->
+    <!-- KfW_Foerderprogramm_151 -->
+    <!-- KfW_Foerderprogramm_152 -->
+    <!-- KfW_Foerderung_Ueber_Land -->
+    <!-- Anlagen_ErneuerbareEnergie -->
+    <!-- Ferienwohnung -->
+    <!-- Ferienhaus -->
+    <!-- Wochenendhaus -->
+    <!-- Bordinghaus -->
+    <!-- UND -->
+    <!-- MAX -->
+    <!-- Bauantrag _ 01.02.2002 -->
+    <!-- ODER -->
+    <!-- EigenstumswohnungInWohneinheit -->
+    <!-- MAX -->
+    <!-- Einfamilienhaus _ zweiWohneinheiten -->
+    <!-- MAX -->
+    <!-- Zweifamilienhaus _ zweiWohneinheiten -->
+</rdf:RDF>
