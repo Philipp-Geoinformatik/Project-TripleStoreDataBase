@@ -22,7 +22,7 @@
 				<version>3.1.0</version>
 				<configuration>
 					<includes>
-						<include>src/main/vocabs/*.rdf</include>
+						<include>src/main/vocabs/*.*</include>
 						<!-- include>src/main/vocabs/foaf.rdf</include -->
 					</includes>
 					<fileOptions>
@@ -32,7 +32,7 @@
 						</source>
 						<source>
 							<!-- Test2.java (only) will contain OntModel declarations -->
-							<input>src/main/vocabs/owl.ttl</input>
+							<input>src/main/vocabs/friends.owl</input>
 							<ontology>true</ontology>
 						</source>
 					</fileOptions>
