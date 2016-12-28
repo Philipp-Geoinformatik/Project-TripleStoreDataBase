@@ -1,73 +1,38 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:RDF xmlns="http://www.jade-hs.de/RDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
 
-    <owl:Ontology rdf:about="">
+    <owl:Ontology rdf:about="http://www.jade-hs.de/RDF/Ontology#">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie zum testen der rekursiven Abfrage durch ein Javaprogramm</rdfs:comment>
         <owl:versionInfo>v0.1</owl:versionInfo>
     </owl:Ontology>
 
-    <owl:Class rdf:about="Mensch">
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Mensch">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
     </owl:Class>
 
-    <owl:Class rdf:about="Person">
-        <rdfs:subClassOf rdf:resource="Mensch" />
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Person">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Mensch" />
     </owl:Class>
 
-    <owl:Class rdf:about="Frau">
-        <rdfs:subClassOf rdf:resource="Person" />
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Frau">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
 
     </owl:Class>
 
-    <owl:Class rdf:about="Mann">
-        <rdfs:subClassOf rdf:resource="Person" />
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Mann">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
     </owl:Class>
     <!-- Praedikate-->
-    <owl:ObjectProperty rdf:about="hatFreund">
-        <rdfs:range rdf:resource="Person" />
+    <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#hatFreund">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
     </owl:ObjectProperty>
 
-    <owl:DatatypeProperty rdf:ID="Steuernummer">
-        <rdfs:domain rdf:resource="Person" />
+    <owl:DatatypeProperty rdf:ID="#Steuernummer">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger" />
     </owl:DatatypeProperty>
 
 
-    <!-- INSTANZEN-->
-    <Frau rdf:about="Gabi">
-        <rdfs:label>Shrubbery</rdfs:label>
-        <rdfs:comment>Gabi ist eine nette junge Dame aus einer kleinen Stadt im Norden Niedersachsens.</rdfs:comment>
-        <hatFreund rdf:resource="Klaus" />
-        <hatFreund rdf:resource="Berd" />
-    </Frau>
-    <Mann rdf:about="Klaus">
-    </Mann>
-    <Mann rdf:about="Mario">
-    </Mann>
-    <Mann rdf:about="Berd">
-    </Mann>
-    <Mann rdf:about="Peter">
-        <hatFreund rdf:resource="Gabi" />
-        <hatFreund rdf:resource="Mario" />
-    </Mann>
 
-
-
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-    <!--FOAF -->
-
-    <foaf:Person rdf:about="#danbri" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-        <foaf:name>Dan Brickley</foaf:name>
-        <foaf:homepage rdf:resource="http://danbri.org/" />
-        <foaf:openid rdf:resource="http://danbri.org/" />
-        <foaf:img rdf:resource="/images/me.jpg" />
-    </foaf:Person>
 </rdf:RDF>

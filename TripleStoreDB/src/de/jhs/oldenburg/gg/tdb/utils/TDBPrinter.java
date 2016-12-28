@@ -57,7 +57,7 @@ public class TDBPrinter {
 	/**
 	 * 
 	 */
-	public String printSPARQLReq(String query, Dataset dataset) {
+	public static String printSPARQLReq(String query, Dataset dataset) {
 		dataset.begin(ReadWrite.READ);
 
 		try (QueryExecution qExec = QueryExecutionFactory.create(query, dataset)) {
@@ -68,4 +68,9 @@ public class TDBPrinter {
 		}
 		return null;
 	}
+
+	public void printResultset(ResultSet results) {
+
+	}
+
 }

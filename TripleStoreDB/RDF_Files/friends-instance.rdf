@@ -1,0 +1,46 @@
+<rdf:RDF xmlns="http://www.jade-hs.de/RDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+    <!-- INSTANZEN-->
+    <Frau rdf:about="http://www.jade-hs.de/RDF/Ontology#Gabi">
+        <rdfs:label>Shrubbery</rdfs:label>
+        <rdfs:comment>Gabi ist eine nette junge Dame aus einer kleinen Stadt im Norden Niedersachsens.</rdfs:comment>
+        <hatFreund rdf:resource="http://www.jade-hs.de/RDF/Ontology#Klaus" />
+        <hatFreund rdf:resource="http://www.jade-hs.de/RDF/Ontology#Berd" />
+    </Frau>
+
+    <Mann rdf:about="http://www.jade-hs.de/RDF/Ontology#Klaus">
+        <hatFreund rdf:resource="http://www.jade-hs.de/RDF/Ontology#Gregor"></hatFreund>
+    </Mann>
+
+
+    <Mann rdf:about="http://www.jade-hs.de/RDF/Ontology#Mario">
+    </Mann>
+    <Mann rdf:about="http://www.jade-hs.de/RDF/Ontology#Gregor">
+        <hatFreund rdf:resource="http://www.jade-hs.de/RDF/Ontology#Marcus"></hatFreund>
+
+    </Mann>
+
+    <Mann rdf:about="http://www.jade-hs.de/RDF/Ontology#Marcus">
+
+    </Mann>
+
+
+    <Mann rdf:about="http://www.jade-hs.de/RDF/Ontology#Berd">
+    </Mann>
+
+    <Mann rdf:about="http://www.jade-hs.de/RDF/Ontology#Peter">
+        <hatFreund rdf:resource="http://www.jade-hs.de/RDF/Ontology#Gabi" />
+        <hatFreund rdf:resource="http://www.jade-hs.de/RDF/Ontology#Mario" />
+    </Mann>
+
+
+
+
+    <!--FOAF -->
+    <foaf:Person rdf:about="http://www.jade-hs.de/RDF/Ontology#GUSTAV" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+        <foaf:name>GUSTAV MAYER</foaf:name>
+        <foaf:homepage rdf:resource="http://gustav-mayer.org/" />
+        <foaf:openid rdf:resource="http://gutav-mayer.org/" />
+        <foaf:img rdf:resource="/images/me.jpg" />
+    </foaf:Person>
+</rdf:RDF>
