@@ -16,6 +16,7 @@ import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ReadWrite;
 import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -69,13 +70,20 @@ public class OWLTDBManager {
 		initDataset();
 		deleteModel();
 		loadGraph(GRAPH_NAME, "I_AM_THE_CREATOR");
-		createOntology("RDF_Files/friends.owl");
-		createOntology("RDF_Files/friends-instance.rdf");
+		
+		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN.owl");
+		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance.owl");
+		//createOntology("RDF_Files/friends.owl");
+		//createOntology("RDF_Files/friends-instance.rdf");
 		// TDBPrinter.printModelContent(dataset);
 		resolveCompound();
 		// resolveCompoundByVocabularyLib();
-		TDBPrinter.printSPARQLReq("prefix jhs: <http://www.jade-hs.de/RDF/Ontology#> "
-				+ "prefix owl: <http://www.w3.org/2002/07/owl#> SELECT DISTINCT ?s ?p ?o  WHERE { ?s <http://www.jade-hs.de/RDF/Ontology#hatFreund> ?o . ?s ?p ?o }", this.dataset);
+		//TDBPrinter.printModelContent(dataset);
+		TDBPrinter.printSPARQLReq("SELECT DISTINCT ?s ?p ?o  WHERE {?s  ?p  ?o .}", dataset);
+		// TDBPrinter.printSPARQLReq("prefix jhs: <http://www.jade-hs.de/RDF/Ontology#> "
+		// +
+		// "prefix owl: <http://www.w3.org/2002/07/owl#> SELECT DISTINCT ?s ?p ?o  WHERE { ?s <http://www.jade-hs.de/RDF/Ontology#hatFreund> ?o . ?s ?p ?o }",
+		// this.dataset);
 	}
 
 	/**
@@ -138,7 +146,7 @@ public class OWLTDBManager {
 		// rsList.forEach(nodeName -> {
 		// getAllLinkedObjects(nodeName, "hatFreund");
 		// });
-		getAllLinkedObjects("http://www.jade-hs.de/RDF/Ontology#Peter", "http://www.jade-hs.de/RDF/Ontology#hatFreund");
+		getAllLinkedObjects("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", "http://www.jade-hs.de/RDF/Ontology#umfasst");
 		this.nodeHeap.forEach(s -> {
 			System.out.println(s);
 		});
@@ -167,10 +175,13 @@ public class OWLTDBManager {
 		String jhs = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology#> ";
 		//
 		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + "SELECT DISTINCT ?s ?p ?o  " + "WHERE { <" + nodeName + "> <" + predicate + "> ?o . }");
+//		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + " SELECT ?y WHERE { <http://www.jade-hs.de/RDF/Ontology#Person> rdf:comment+ ?y. }");
+
 		try (QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel())) {
 			// ///Get results//////
 			ResultSet results = qexec.execSelect();
 			//
+			//ResultSetFormatter.out(results);
 			while (results.hasNext()) {
 				QuerySolution soln = results.nextSolution();
 				RDFNode s = soln.get("?s");
@@ -216,7 +227,7 @@ public class OWLTDBManager {
 		boolean b = true;
 		for (int i = 0; i < nodes.size(); i++) {
 			if (nodeHeap.contains(nodes.get(i))) {
-				System.err.println("Invalid compound detected! Node: " + nodes.get(i) + " already exists in nodeHeap");
+				System.err.println("Invalid compound detected! Node: " + nodes.get(i) + " already exists in node heap");
 				b = false;
 			} else {
 				this.nodeHeap.add(nodes.get(i));

@@ -1,0 +1,38 @@
+<rdf:RDF xmlns="http://www.jade-hs.de/RDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie zum testen der rekursiven Abfrage durch ein Javaprogramm</rdfs:comment>
+        <owl:versionInfo>v0.1</owl:versionInfo>
+    </owl:Ontology>
+
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Mensch">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Person">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Mensch" />
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Frau">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
+
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Mann">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
+    </owl:Class>
+    <!-- Praedikate-->
+    <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#hatFreund">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:ID="http://www.jade-hs.de/RDF/Ontology#Steuernummer">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Person" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger" />
+    </owl:DatatypeProperty>
+
+
+
+</rdf:RDF>

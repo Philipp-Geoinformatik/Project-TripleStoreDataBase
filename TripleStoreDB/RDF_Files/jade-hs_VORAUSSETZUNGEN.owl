@@ -1,0 +1,155 @@
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
+        <owl:versionInfo>v1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://www.example.org/foo" />
+        <owl:priorVersion rdf:resource="http://ontoware.org/projects/swrc" />
+    </owl:Ontology>
+
+    <!-- PACKAGE: Voraussetzungen -->
+    <!-- Voraussetzung -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Voraussetzung">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology#hatBedingung" />
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <!-- Bedingung  -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Bedingung">
+    </owl:Class>
+    <!-- Bedingungsinstanz -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Bedingungsinstanz">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
+    </owl:Class>
+    <!-- Vergleichsbedingung -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Vergleichsbedingung">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsinstanz" />
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology#vergleichtMit" />
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <!-- MinOperator -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#MinOperator">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichsbedingung" />
+    </owl:Class>
+    <!-- MaxOperator -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#MaxOperator">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichsbedingung" />
+    </owl:Class>
+    <!-- Existenzbedingung -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Existenzbedingung">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsinstanz" />
+    </owl:Class>
+    <!-- Vergleichswert -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Vergleichswert">
+    </owl:Class>
+    <!-- Zahlenwert -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Zahlenwert">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichswert" />
+    </owl:Class>
+    <!-- Datum -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Datum">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichswert" />
+    </owl:Class>
+    <!--Bedinungsverbund-->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Bedingungsverbund">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
+    </owl:Class>
+    <!-- NichtOperator -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#NichtOperator">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsverbund" />
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology#umfasst" />
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <!-- OderOperator -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#OderOperator">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsverbund" />
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology#umfasst" />
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <!-- UndOperator -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#UndOperator">
+        <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsverbund" />
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology#umfasst" />
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <!-- Name -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Name">
+    </owl:Class>
+    <!-- Ergebnis -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Ergebnis">
+    </owl:Class>
+    <!-- Wert -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology#Wert">
+    </owl:Class>
+
+    <!-- PRAEDIKATE-->
+    <!-- Voraussetzung		umfasst			Bedingung -->
+    <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#umfasst">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Voraussetzung" />
+    </owl:ObjectProperty>
+    <!-- Bedingungsverbund		umfasst			Bedingung -->
+    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#umfasst">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsverbund" />
+    </owl:DatatypeProperty>
+    <!-- Vergleichsbedingung	vergleichtMit	Vergleichswert -->
+    <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#vergleichtMit">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichswert" />
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichsbedingung" />
+    </owl:ObjectProperty>
+
+    <!-- EIGENSCHAFTEN -->
+    <!-- Voraussetzung -->
+    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#Ergebnis">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Voraussetzung" />
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#http://www.w3.org/2001/XMLSchema#boolean" />
+    </owl:DatatypeProperty>
+    <!-- Bedingungsinstanz -->
+    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#Ergebnis">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsinstanz" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#Name">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsinstanz" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    </owl:DatatypeProperty>
+    <!-- Bedingungsverbund -->
+    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#Ergebnis">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingungsverbund" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+    </owl:DatatypeProperty>
+    <!-- Vergleichswert -->
+    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#Wert">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Vergleichswert" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+    </owl:DatatypeProperty>
+</rdf:RDF>
