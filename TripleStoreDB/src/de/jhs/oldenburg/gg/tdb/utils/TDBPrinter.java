@@ -13,6 +13,14 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 
+/**
+ * 
+ * @author Philipp Grashorn <br>
+ *         From the master project of the Jade University of applied science:
+ *         TripleStoreDB <br>
+ *         Creation date: 06.01.2017
+ *
+ */
 public class TDBPrinter {
 
 	/**
@@ -33,7 +41,6 @@ public class TDBPrinter {
 				Resource subject = stmt.getSubject(); // get the subject
 				Property predicate = stmt.getPredicate(); // get the predicate
 				RDFNode object = stmt.getObject(); // get the object
-
 				//
 				System.out.print("Subject( " + subject.toString() + " ) -->");
 				System.out.print(" predicate( " + predicate.toString() + " ) -->");
@@ -69,8 +76,15 @@ public class TDBPrinter {
 		return null;
 	}
 
-	public void printResultset(ResultSet results) {
-
+	/**
+	 * 
+	 * @param resultSet
+	 */
+	public static void printResultset(ResultSet resultSet) {
+		if (resultSet != null)
+			ResultSetFormatter.out(resultSet);
+		else
+			System.err.println("Resultset is <NULL>");
 	}
 
 }

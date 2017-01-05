@@ -31,7 +31,10 @@ import org.apache.jena.vocabulary.VCARD;
 
 /**
  * 
- * @author SSA_HErnst
+ * @author Philipp Grashorn <br>
+ *         From the master project of the Jade University of applied science:
+ *         TripleStoreDB <br>
+ *         Creation date: 06.01.2017
  *
  */
 public class MyRDFBuilder {
@@ -50,8 +53,7 @@ public class MyRDFBuilder {
 		Model model = ModelFactory.createDefaultModel();
 		// create the resource
 		// and add the properties cascading style
-		Resource johnSmith = model.createResource(personURI).addProperty(VCARD.FN, fullName).addProperty(VCARD.N,
-				model.createResource().addProperty(VCARD.Given, givenName).addProperty(VCARD.Family, familyName));
+		Resource johnSmith = model.createResource(personURI).addProperty(VCARD.FN, fullName).addProperty(VCARD.N, model.createResource().addProperty(VCARD.Given, givenName).addProperty(VCARD.Family, familyName));
 
 		// list the statements in the Model
 		StmtIterator iter = model.listStatements();
@@ -89,20 +91,21 @@ public class MyRDFBuilder {
 			model.add(myModel);
 
 			// A SPARQL query will see the new statement added.
-			try (QueryExecution qExec = QueryExecutionFactory.create("SELECT (count(*) AS ?count) { ?s ?p ?o} LIMIT 10",
-					dataset)) {
+			try (QueryExecution qExec = QueryExecutionFactory.create("SELECT (count(*) AS ?count) { ?s ?p ?o} LIMIT 10", dataset)) {
 				ResultSet rs = qExec.execSelect();
 				ResultSetFormatter.out(rs);
 			}
 
-			/* ... perform a SPARQL Update
-			GraphStore graphStore = GraphStoreFactory.create(dataset);
-			String sparqlUpdateString = StrUtils.strjoinNL("PREFIX . <http://example/>",
-					"INSERT { :s :p ?now } WHERE { BIND(now() AS ?now) }");
-
-			UpdateRequest request = UpdateFactory.create(sparqlUpdateString);
-			UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore);
-			proc.execute();*/
+			/*
+			 * ... perform a SPARQL Update GraphStore graphStore =
+			 * GraphStoreFactory.create(dataset); String sparqlUpdateString =
+			 * StrUtils.strjoinNL("PREFIX . <http://example/>",
+			 * "INSERT { :s :p ?now } WHERE { BIND(now() AS ?now) }");
+			 * 
+			 * UpdateRequest request = UpdateFactory.create(sparqlUpdateString);
+			 * UpdateProcessor proc = UpdateExecutionFactory.create(request,
+			 * graphStore); proc.execute();
+			 */
 
 			// Finally, commit the transaction.
 			dataset.commit();
