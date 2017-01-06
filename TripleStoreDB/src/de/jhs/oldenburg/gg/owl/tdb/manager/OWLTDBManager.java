@@ -14,7 +14,7 @@ import org.apache.jena.vocabulary.DCTerms;
 import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
 
-import de.jhs.oldenburg.gg.tdb.utils.CompoundResolver;
+import de.jhs.oldenburg.gg.owl.compound.CompoundResolver;
 
 /**
  * 
@@ -67,7 +67,8 @@ public class OWLTDBManager {
 		CompoundResolver solver = new CompoundResolver(dataset);
 		String parentNode = "http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1";
 		String predicate = "http://www.jade-hs.de/RDF/Ontology#umfasst";
-		solver.resolveCompound(parentNode, predicate).forEach(System.out::println);
+		//Printing all CompoundNodes
+		solver.resolveCompoundByNodeStructure(parentNode, predicate).forEach(System.out::println);
 	}
 
 	/**

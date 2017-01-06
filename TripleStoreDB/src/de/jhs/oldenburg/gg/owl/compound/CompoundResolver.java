@@ -1,4 +1,4 @@
-package de.jhs.oldenburg.gg.tdb.utils;
+package de.jhs.oldenburg.gg.owl.compound;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -106,7 +106,50 @@ public class CompoundResolver {
 
 	/**
 	 * 
+	 * @param parentNode
+	 * @param predicate
+	 * @return
 	 */
+	private ArrayList<CompoundNode> getCompoundNodes(CompoundNode parentNode, String predicate) {
+		ArrayList<CompoundNode> childNodes = new ArrayList<>();
+		dataset.begin(ReadWrite.READ);
+		// Query to the Graph model
+		String rdf = "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ";
+		String rdfs = "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> ";
+		String foaf = "prefix foaf: <http://xmlns.com/foaf/0.1/> ";
+		String owl = "prefix owl: <http://www.w3.org/2002/07/owl#> ";
+		String jhs = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology#> ";
+		//
+		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + "SELECT DISTINCT  ?o  " + "WHERE { <" + parentNode.getResourceUri() + "> <" + predicate + "> ?o . }");
+
+		try (QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel())) {
+			// get the result set
+			ResultSet results = qexec.execSelect();
+			while (results.hasNext()) {
+				QuerySolution soln = results.nextSolution();
+				RDFNode o = soln.get("?o");
+				// get each object of the query result
+				if (o != null)
+					if (o.isResource()) {
+						Resource r2 = (Resource) o;
+						//System.out.println("SIMPLE OUT :"+r2);
+						CompoundNode n =  new CompoundNode(r2.toString());
+						n.setParentNode(parentNode);
+						childNodes.add(n);
+					}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dataset.end();
+		}
+		return childNodes;
+	}
+
+	/**
+	 * 
+	 */
+	@Deprecated
 	public void resolveCompoundByVocabularyLib() {
 		try {
 			dataset.begin(ReadWrite.READ);
@@ -124,4 +167,30 @@ public class CompoundResolver {
 			dataset.end();
 		}
 	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<CompoundNode> resolveCompoundByNodeStructure(String parentNode, String predicate) {
+		// Boolean for breaking the loop
+		int i = 0;
+		// List for values
+		ArrayList<CompoundNode> nodes = new ArrayList<CompoundNode>(Arrays.asList(new CompoundNode(parentNode)));
+		// List of predefined name spaces
+		while (true) {
+			// function for recursion
+			if (i == nodes.size())// break condition
+				return nodes;
+			// do the logical things for getting the child elements
+			ArrayList<CompoundNode> n = this.getCompoundNodes(nodes.get(i), predicate);
+			//System.out.println(n);
+			nodes.get(i).setChildNodes(n);
+			nodes.addAll(n);
+			i++;
+		}
+		// TODO
+
+	}
+
 }
