@@ -55,20 +55,31 @@ public class OWLTDBManager {
 		System.out.println("////////////////" + new Date() + "////////////////");
 		System.out.println("////////////////////////////////////////////////////////////");
 		initDataset();
-		//deleteModel();
-		//loadGraph(GRAPH_NAME, "I_AM_THE_CREATOR");
+		deleteModel();
+		// loadGraph(GRAPH_NAME, "I_AM_THE_CREATOR");
 		// Voraussetzungen
-		//createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN.owl");
-		//createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance.owl");
+		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN.owl");
+		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance.owl");
+
+		// Immobilien
+		createOntology("RDF_Files/jade-hs_IMMOBILIE.owl");
+		createOntology("RDF_Files/jade-hs_IMMOBILIE_instance.owl");
+
 		// test --> friends ontology
 		// createOntology("RDF_Files/friends.owl");
 		// createOntology("RDF_Files/friends-instance.rdf");
-
+		// String query = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology/>";
+		// query+= " SELECT DISTINCT ?p WHERE
+		// {<http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1> ?p
+		// ?o . filter strstarts(str (?p),
+		// 'http://www.jade-hs.de/RDF/Ontology')}";
+		// TDBPrinter.printSPARQLReq(query, dataset);
+		// TDBPrinter.printModelContent(dataset);
 		CompoundResolver solver = new CompoundResolver(dataset);
-		String parentNode = "http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1";
-		String predicate = "http://www.jade-hs.de/RDF/Ontology#umfasst";
-		//Printing all CompoundNodes
-		solver.resolveCompoundByNodeStructure(parentNode, predicate).forEach(System.out::println);
+		String parentNode = "http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1";
+		String nameSpace = "http://www.jade-hs.de/RDF/Ontology/";
+		// Printing all CompoundNodes
+		solver.resolveCompound(parentNode, nameSpace).forEach(System.out::println);
 	}
 
 	/**
@@ -90,7 +101,7 @@ public class OWLTDBManager {
 
 	/**
 	 * 
-	 * @param graphName
+	 * @param graphName 
 	 * @param creator
 	 */
 	public void loadGraph(String graphName, String creator) {
@@ -115,8 +126,9 @@ public class OWLTDBManager {
 		dataset.getDefaultModel().add(inf);
 	}
 
+	
 	/**
- 	 * 
+	 * 
 	 */
 	public void deleteModel() {
 		if (dataset != null) {

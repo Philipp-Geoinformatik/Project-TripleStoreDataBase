@@ -8,23 +8,24 @@
 
     <!-- Voraussetzung -->
     <jhs:Voraussetzung rdf:about="http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_1" />
     </jhs:Voraussetzung>
     <!-- UND -->
     <jhs:UndOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_1">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/NichtOperator#NichtOperator_1" />
-        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_2" />
     </jhs:UndOperator>
+	
     <!-- NICHT -->
     <jhs:NichtOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/NichtOperator#NichtOperator_1">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1" />
     </jhs:NichtOperator>
+	
+			
     <!-- ODER -->
     <jhs:OderOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_1" />
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_2" />
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_3" />
@@ -38,58 +39,58 @@
     <!-- KfW_Foerderprogramm_271 -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_1">
         <jhs:Name>Foerderprogramm271</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- KfW_Foerderprogramm_151 -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_2">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:Name>Foerderprogramm151</jhs:Name>
     </jhs:Existenzbedingung>
     <!-- KfW_Foerderprogramm_152 -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_3">
         <jhs:Name>Foerderprogramm152</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- Foerderung_Durch_Land -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_4">
         <jhs:Name>FoerderungDurchLand</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- Anlagen_ErneuerbareEnergie -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_5">
         <jhs:Name>AnlagenFuerErneurerbareEnergie</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- Ferienwohnung -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_6">
         <jhs:Name>Ferienwohnung</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- Ferienhaus -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_7">
         <jhs:Name>Ferienhaus</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- Wochenendhaus -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_8">
         <jhs:Name>Wochenendhaus</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- Bordinghaus -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_9">
         <jhs:Name>Bordinghaus</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- UND -->
     <jhs:UndOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_2">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/MaxOperator#MaxOperator_1" />
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_2" />
     </jhs:UndOperator>
     <!-- MAX -->
     <jhs:MaxOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/MaxOperator#MaxOperator_1">
         <jhs:Name>Bauantrag</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:vergleichtMit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Vergleichswert#Vergleichswert_1" />
     </jhs:MaxOperator>
     <!-- Bauantrag _ 01.02.2002 -->
@@ -98,7 +99,7 @@
     </jhs:Vergleichswert>
     <!-- ODER -->
     <jhs:OderOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_2">
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_10" />
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/MaxOperator#MaxOperator_2" />
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/MaxOperator#MaxOperator_3" />
@@ -106,12 +107,12 @@
     <!-- EigenstumswohnungInWohneinheit -->
     <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_10">
         <jhs:Name>EigentumswohnungInWohneinheit</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
     </jhs:Existenzbedingung>
     <!-- MAX -->
     <jhs:MaxOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/MaxOperator#MaxOperator_2">
         <jhs:Name>Einfamilienhaus</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:vergleichtMit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Vergleichswert#Vergleichswert_2" />
     </jhs:MaxOperator>
     <!-- Einfamilienhaus _ zweiWohneinheiten -->
@@ -121,7 +122,7 @@
     <!-- MAX -->
     <jhs:MaxOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/MaxOperator#MaxOperator_3">
         <jhs:Name>Zweifamilienhaus</jhs:Name>
-        <jhs:Ergebnis>false</jhs:Ergebnis>
+        
         <jhs:vergleichtMit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Vergleichswert#Vergleichswert_2" />
     </jhs:MaxOperator>
 

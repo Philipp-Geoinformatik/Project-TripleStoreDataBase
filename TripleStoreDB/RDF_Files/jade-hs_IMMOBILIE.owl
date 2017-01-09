@@ -1,0 +1,339 @@
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
+        <owl:versionInfo>v1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://www.example.org/foo" />
+        <owl:priorVersion rdf:resource="http://ontoware.org/projects/swrc" />
+    </owl:Ontology>
+	
+	<!-- PACKAGE: Gebaeudedaten -->
+	<!-- Antragsteller  -->
+	<owl:Class rdf:about="Antragssteller">
+    </owl:Class>
+	<!-- Immobilie  -->
+	<owl:Class rdf:about="Immobilie">
+		<rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="hatBaulicheKennzahlen" />
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+		<rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="hatDach" />
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+		<rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="hatEtage" />
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+		<rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="hatBautyp" />
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+	<!-- BaulicheKennzahlen  -->
+	<owl:Class rdf:about="BaulicheKennzahlen">
+    </owl:Class>
+	<!-- Bautyp  -->
+	<owl:Class rdf:about="Bautyp">
+    </owl:Class>
+	<!-- Reihenhaus  -->
+	<owl:Class rdf:about="Reihenhaus">
+	<rdfs:subClassOf rdf:resource="Bautyp" />
+    </owl:Class>
+	<!-- OffeneBauweise  -->
+	<owl:Class rdf:about="OffeneBauweise">
+	<rdfs:subClassOf rdf:resource="Bautyp" />
+    </owl:Class>
+	<!-- Dach  -->
+	<owl:Class rdf:about="Dach">
+    </owl:Class>
+	<!-- Flachdach  -->
+	<owl:Class rdf:about="Flachdach">
+	<rdfs:subClassOf rdf:resource="Dach" />
+    </owl:Class>
+	<!-- Walmdach  -->
+	<owl:Class rdf:about="Walmdach">
+	<rdfs:subClassOf rdf:resource="Dach"/>
+    </owl:Class>
+	<!-- Satteldach  -->
+	<owl:Class rdf:about="Satteldach">
+	<rdfs:subClassOf rdf:resource="Dach"/>
+    </owl:Class>
+	<!-- Etage -->
+	<owl:Class rdf:about="Etage">
+    </owl:Class>
+	<!-- Gebaeudeeinheit  -->
+	<owl:Class rdf:about="Gebaeudeeinheit">
+		<rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="hatZimmer" />
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+                    1
+                </owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+	<!-- PersonelleKennzahlen  -->
+	<owl:Class rdf:about="PersonelleKennzahlen">
+    </owl:Class>
+	<!-- Wohneinheit -->
+	<owl:Class rdf:about="Wohneinheit">
+	<rdfs:subClassOf rdf:resource="Gebaeudeeinheit"/> 
+    </owl:Class>
+	<!-- Geschaefseinheit  -->
+	<owl:Class rdf:about="Geschaefseinheit">
+	<rdfs:subClassOf rdf:resource="Gebaeudeeinheit"/> 
+    </owl:Class>
+	<!-- Heizung  -->
+	<owl:Class rdf:about="Heizung">
+    </owl:Class>
+	<!-- Gasheizung  -->
+	<owl:Class rdf:about="Gasheizung">
+	<rdfs:subClassOf rdf:resource="Heizung"/> 
+    </owl:Class>
+	<!-- Elektroheizung  -->
+	<owl:Class rdf:about="Elektroheizung">
+	<rdfs:subClassOf rdf:resource="Heizung"/>
+    </owl:Class>
+	<!-- Oelheizung  -->
+	<owl:Class rdf:about="Oelheizung">
+	<rdfs:subClassOf rdf:resource="Heizung"/>
+    </owl:Class>
+	<!-- Zimmer  -->
+	<owl:Class rdf:about="Zimmer">
+    </owl:Class>
+	<!-- Kueche  -->
+	<owl:Class rdf:about="Kueche">
+	<rdfs:subClassOf rdf:resource="Zimmer"/>
+    </owl:Class>
+	<!-- Keller  -->
+	<owl:Class rdf:about="Keller">
+	<rdfs:subClassOf rdf:resource="Zimmer"/>
+    </owl:Class>
+	<!-- Elektronik  -->
+	<owl:Class rdf:about="Elektronik">
+    </owl:Class>
+	<!-- Fenster  -->
+	<owl:Class rdf:about="Fenster">
+    </owl:Class>
+	<!-- Kippfenster  -->
+	<owl:Class rdf:about="Kippfenster">
+	<rdfs:subClassOf rdf:resource="Fenster"/>
+    </owl:Class>
+	<!-- Schwingfenster  -->
+	<owl:Class rdf:about="Schwingfenster">
+	<rdfs:subClassOf rdf:resource="Fenster"/>
+    </owl:Class>
+	<!-- Verglasung  -->
+	<owl:Class rdf:about="Verglasung">
+    </owl:Class>
+	<!-- Einfachverglasung  -->
+	<owl:Class rdf:about="Einfachverglasung">
+	<rdfs:subClassOf rdf:resource="Verglasung"/>
+    </owl:Class>
+	<!-- Zweifachverglasung  -->
+	<owl:Class rdf:about="Zweifachverglasung">
+	<rdfs:subClassOf rdf:resource="Verglasung"/>
+    </owl:Class>
+	<!-- Dreifachverglasung  -->
+	<owl:Class rdf:about="Dreifachverglasung">
+	<rdfs:subClassOf rdf:resource="Verglasung"/>
+    </owl:Class>
+	<!-- Heizkoerper  -->
+	<owl:Class rdf:about="Heizkoerper">
+    </owl:Class>
+	<!-- Roehrenheizkoerper  -->
+	<owl:Class rdf:about="Roehrenheizkoerper">
+	<rdfs:subClassOf rdf:resource="Heizkoerper"/>
+    </owl:Class>
+	<!-- Plattenheizkoerper  -->
+	<owl:Class rdf:about="Plattenheizkoerper">
+	<rdfs:subClassOf rdf:resource="Heizkoerper"/>
+    </owl:Class>
+	<!-- Gliederheizkoerper  -->
+	<owl:Class rdf:about="Gliederheizkoerper">
+	<rdfs:subClassOf rdf:resource="Heizkoerper"/>
+    </owl:Class>
+	<!-- Alter  -->
+	<owl:Class rdf:about="Alter">
+    </owl:Class>
+	<!-- Grundflaechenzahl  -->
+	<owl:Class rdf:about="Grundflaechenzahl">
+    </owl:Class>
+	<!-- Geschossflaechenzahl  -->
+	<owl:Class rdf:about="Geschossflaechenzahl">
+    </owl:Class>
+	<!-- AnzahlGeschosse  -->
+	<owl:Class rdf:about="AnzahlGeschosse">
+    </owl:Class>
+	<!-- Grundstuecksflaeche  -->
+	<owl:Class rdf:about="Grundflaechenzahl">
+    </owl:Class>
+	<!-- Baumassenzahl  -->
+	<owl:Class rdf:about="Baumassenzahl">
+    </owl:Class>
+	<!-- Energieeffizienzklasse  -->
+	<owl:Class rdf:about="Energieeffizienzklasse">
+    </owl:Class>
+	<!-- AnzahlPersonen  -->
+	<owl:Class rdf:about="AnzahlPersonen">
+    </owl:Class>
+	
+	
+	<!-- PRAEDIKATE-->
+    <!-- Antragssteller		hat				Immobilie -->
+    <owl:ObjectProperty rdf:about="hatImmobilie">
+        <rdfs:range rdf:resource="Immobilie" />
+        <rdfs:domain rdf:resource="Antragssteller" />
+    </owl:ObjectProperty>
+	<!-- Immobilie			hat				BaulicheKennzahlen -->
+    <owl:ObjectProperty rdf:about="hatBaulicheKennzahlen">
+        <rdfs:range rdf:resource="BaulicheKennzahlen" />
+        <rdfs:domain rdf:resource="Immobilie" />
+    </owl:ObjectProperty>
+	<!-- Immobilie			hat				Dach -->
+    <owl:ObjectProperty rdf:about="hatDach">
+        <rdfs:range rdf:resource="Dach" />
+        <rdfs:domain rdf:resource="Immobilie" />
+    </owl:ObjectProperty>
+	<!-- Immobilie			hat				Etage -->
+    <owl:ObjectProperty rdf:about="hatEtage">
+        <rdfs:range rdf:resource="Etage" />
+        <rdfs:domain rdf:resource="Immobilie" />
+    </owl:ObjectProperty>
+	<!-- Immobilie			hat				Heizung -->
+    <owl:ObjectProperty rdf:about="hatHeizung">
+        <rdfs:range rdf:resource="Heizung" />
+        <rdfs:domain rdf:resource="Immobilie" />
+    </owl:ObjectProperty>
+	<!-- Etage				hat				Gebaeudeeinheit -->
+    <owl:ObjectProperty rdf:about="hatGebaeudeeinheit">
+        <rdfs:range rdf:resource="Gebaeudeeinheit" />
+        <rdfs:domain rdf:resource="Etage" />
+    </owl:ObjectProperty>
+	<!-- Gebaeudeeinheit	hat				PersonelleKennzahlen -->
+    <owl:ObjectProperty rdf:about="hatPersonelleKennzahlen">
+        <rdfs:range rdf:resource="PersonelleKennzahlen" />
+        <rdfs:domain rdf:resource="Gebaeudeeinheit" />
+    </owl:ObjectProperty>
+	<!-- Gebaeudeeinheit	hat				Heizung -->
+    <owl:ObjectProperty rdf:about="hatHeizung">
+        <rdfs:range rdf:resource="Heizung" />
+        <rdfs:domain rdf:resource="Gebaeudeeinheit" />
+    </owl:ObjectProperty>
+	<!-- Gebaeudeeinheit	hat				Zimmer -->
+    <owl:ObjectProperty rdf:about="hatZimmer">
+        <rdfs:range rdf:resource="Zimmer" />
+        <rdfs:domain rdf:resource="Gebaeudeeinheit" />
+    </owl:ObjectProperty>
+	<!-- Zimmer				hat				Fenster -->
+    <owl:ObjectProperty rdf:about="hatFenster">
+        <rdfs:range rdf:resource="Fenster" />
+        <rdfs:domain rdf:resource="Zimmer" />
+    </owl:ObjectProperty>
+	<!-- Zimmer				hat				Heizkoerper -->
+    <owl:ObjectProperty rdf:about="hatHeizkoerper">
+        <rdfs:range rdf:resource="Heizkoerper" />
+        <rdfs:domain rdf:resource="Zimmer" />
+    </owl:ObjectProperty>
+	<!-- Fenster			hat				Verglasung -->
+    <owl:ObjectProperty rdf:about="hatVerglasung">
+        <rdfs:range rdf:resource="Verglasung" />
+        <rdfs:domain rdf:resource="Fenster" />
+    </owl:ObjectProperty>
+	<!-- Zimmer				istAuf			Etage -->
+    <owl:ObjectProperty rdf:about="IstAufEtage">
+        <rdfs:range rdf:resource="Etage" />
+        <rdfs:domain rdf:resource="Zimmer" />
+    </owl:ObjectProperty>
+	<!-- Heizung			heiztAuf		Heizkoerper -->
+    <owl:ObjectProperty rdf:about="heiztAufHeizkoerper">
+        <rdfs:range rdf:resource="Heizkoerper" />
+        <rdfs:domain rdf:resource="Heizung" />
+    </owl:ObjectProperty>
+	<!-- Heizung			befindetSichIn	Zimmer -->
+    <owl:ObjectProperty rdf:about="befindetSichInZimmer">
+        <rdfs:range rdf:resource="Zimmer" />
+        <rdfs:domain rdf:resource="Heizung" />
+    </owl:ObjectProperty>
+	
+	<!-- EIGENSCHAFTEN -->
+	<!-- Fenster -->
+    <owl:ObjectProperty rdf:about="Alter">
+        <rdfs:domain rdf:resource="Fenster" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth" />
+    </owl:ObjectProperty>
+    <!-- Heizung -->
+    <owl:ObjectProperty rdf:about="Alter">
+        <rdfs:domain rdf:resource="Heizung" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth" />
+    </owl:ObjectProperty>
+    <!-- Heizkoerper -->
+    <owl:ObjectProperty rdf:about="Alter">
+        <rdfs:domain rdf:resource="Heizkoerper" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth" />
+    </owl:ObjectProperty>
+    <!-- Elektronik -->
+    <owl:ObjectProperty rdf:about="Alter">
+        <rdfs:domain rdf:resource="Elektronik" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth" />
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="Energieeffizienzklasse">
+        <rdfs:domain rdf:resource="Elektronik" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    </owl:ObjectProperty>
+    <!-- BaulicheKennzahlen-->
+    <owl:ObjectProperty rdf:about="Alter">
+        <rdfs:domain rdf:resource="BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth" />
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="Grundflaechenzahl">
+        <rdfs:domain rdf:resource="BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="Geschossflaechenzahl">
+        <rdfs:domain rdf:resource="BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="AnzahlGeschosse">
+        <rdfs:domain rdf:resource="BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" />
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="Grundstuecksflaeche">
+        <rdfs:domain rdf:resource="BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="Baumassenzahl">
+        <rdfs:domain rdf:resource="BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
+    <!-- PersonelleKennzahlen-->
+    <owl:ObjectProperty rdf:about="AnzahlPersonen">
+        <rdfs:domain rdf:resource="PersonelleKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" />
+    </owl:ObjectProperty>
+
+    <!-- BEISPIEL
+    <Foerderprogramm rdf:about="#Mein_ganz individuelles_Foerderprogramm1">
+        <hatFoerdervoraussetzung rdf:resource="VoraussetzungXYZ" />
+        <IdentifikationsNummer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">123456789</IdentifikationsNummer>
+    </Foerderprogramm>
+    <Foerderprogramm rdf:about="#Mein_ganz individuelles_Foerderprogramm2" />
+    <Foerdervoraussetzung rdf:about="VoraussetzungXYZ" />
+    -->
+</rdf:RDF>

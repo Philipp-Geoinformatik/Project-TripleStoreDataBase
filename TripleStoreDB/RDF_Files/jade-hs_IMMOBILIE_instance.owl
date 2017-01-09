@@ -1,0 +1,141 @@
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de/RDF/OntologyRDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
+        <owl:versionInfo>v1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://www.example.org/foo" />
+        <owl:priorVersion rdf:resource="http://ontoware.org/projects/swrc" />
+    </owl:Ontology>
+
+	<!-- Immobilie -->
+	<jhs:Immobilie rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1">
+		<jhs:hatBaulicheKennzahlen rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1"/>
+		<jhs:hatBautyp rdf:resource="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1"/>
+		<jhs:hatDach rdf:resource="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1"/>
+		<jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1"/>
+		<jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2"/>
+		<jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1"/>
+	</jhs:Immobilie>
+	
+	<!-- BaulicheKennzahlen  -->
+	<jhs:BaulicheKennzahlen rdf:about="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1">
+		<jhs:Alter>1917</jhs:Alter>
+		<jhs:Grundflaechenzahl>0.3</jhs:Grundflaechenzahl>
+		<jhs:AnzahlGeschosse>2</jhs:AnzahlGeschosse>
+	</jhs:BaulicheKennzahlen>
+	
+	<!-- Dach Satteldach -->
+	<jhs:Satteldach rdf:about="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Satteldach>
+	
+	<!-- OffeneBauweise -->
+	<jhs:OffeneBauweise rdf:about="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1">
+	</jhs:OffeneBauweise>
+	
+	<!-- Etagen -->
+	<jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1">
+		<jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1"/>
+	</jhs:Etage>
+	<jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2">
+		<jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2"/>
+	</jhs:Etage>
+	
+	<!-- Heizung -->
+	<jhs:Heizung rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1">
+		<jhs:Alter>1995</jhs:Alter>
+		<jhs:heiztAuf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_1"/>
+		<jhs:heiztAuf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_2"/>
+		<jhs:heiztAuf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_3"/>
+		<jhs:heiztAuf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_4"/>
+		<jhs:heiztAuf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_5"/>
+		<jhs:heiztAuf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_6"/>
+	</jhs:Heizung>
+	
+	<!-- Wohneinheit 1 -->
+	<jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1">
+		<jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_1"/>
+		<jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_2"/>
+		<jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_3"/>
+	</jhs:Wohneinheit>
+	<!-- Wohneinheit 2 -->
+	<jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2">
+		<jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_4"/>
+		<jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_5"/>
+		<jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_6"/>
+	</jhs:Wohneinheit>
+	
+	<!-- Zimmer 1 -->
+	<jhs:Zimmer rdf:about="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_1">
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1"/>
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_2"/>
+		<jhs:hatHeizkoerper rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_1"/>
+	</jhs:Zimmer>
+	<!-- Zimmer 2 -->
+	<jhs:Zimmer rdf:about="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_2">
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_3"/>
+		<jhs:hatHeizkoerper rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_2"/>
+	</jhs:Zimmer>
+	<!-- Zimmer 3 -->
+	<jhs:Zimmer rdf:about="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_3">
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_4"/>
+		<jhs:hatHeizkoerper rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_3"/>
+	</jhs:Zimmer>
+	
+	<!-- Zimmer 4 -->
+	<jhs:Zimmer rdf:about="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_4">
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_5"/>
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_6"/>
+		<jhs:hatHeizkoerper rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_4"/>
+	</jhs:Zimmer>
+	<!-- Zimmer 5 -->
+	<jhs:Zimmer rdf:about="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_5">
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_7"/>
+		<jhs:hatHeizkoerper rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_5"/>
+	</jhs:Zimmer>
+	<!-- Zimmer 6 -->
+	<jhs:Zimmer rdf:about="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_6">
+		<jhs:hatFenster rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_8"/>
+		<jhs:hatHeizkoerper rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_6"/>
+	</jhs:Zimmer>
+	
+	<!-- Fenster 1-9 -->
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_2">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_3">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_4">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_5">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_6">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_7">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	<jhs:Fenster rdf:about="http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_8">
+		<jhs:Alter>1995</jhs:Alter>
+	</jhs:Fenster>
+	
+	<!-- Heizkoerper 1-6 -->
+	<jhs:Heizkoerper rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_1">
+	</jhs:Heizkoerper>
+	<jhs:Heizkoerper rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_2">
+	</jhs:Heizkoerper>
+	<jhs:Heizkoerper rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_3">
+	</jhs:Heizkoerper>
+	<jhs:Heizkoerper rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_4">
+	</jhs:Heizkoerper>
+	<jhs:Heizkoerper rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_5">
+	</jhs:Heizkoerper>
+	<jhs:Heizkoerper rdf:about="http://www.jade-hs.de/RDF/Ontology/Heizkoerper#Heizkoerper_6">
+	</jhs:Heizkoerper>
+	
+</rdf:RDF>

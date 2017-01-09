@@ -1,4 +1,4 @@
-<rdf:RDF xmlns:jhs="http://www.jade-hs.de#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de/RDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
     <owl:Ontology rdf:about="">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
         <owl:versionInfo>v1.0</owl:versionInfo>
@@ -97,7 +97,7 @@
                 <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
                     1
                 </owl:minCardinality>
-            </owl:Restriction>
+			</owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     <!-- Name -->
@@ -116,6 +116,15 @@
         <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Voraussetzung" />
     </owl:ObjectProperty>
+	
+	
+	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#LOLOLOL">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Voraussetzung" />
+    </owl:ObjectProperty>
+	
+	
+	
     <!-- Bedingungsverbund		umfasst			Bedingung -->
     <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology#umfasst">
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology#Bedingung" />
