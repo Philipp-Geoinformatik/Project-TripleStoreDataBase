@@ -15,6 +15,7 @@ import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
 
 import de.jhs.oldenburg.gg.owl.compound.CompoundResolver;
+import de.jhs.oldenburg.gg.tdb.utils.TDBPrinter;
 
 /**
  * 
@@ -50,6 +51,7 @@ public class OWLTDBManager {
 	/**
 	 * Manages all needed functions
 	 */
+
 	public void run() {
 		System.out.println("////////////////////////////////////////////////////////////");
 		System.out.println("////////////////" + new Date() + "////////////////");
@@ -80,6 +82,18 @@ public class OWLTDBManager {
 		String nameSpace = "http://www.jade-hs.de/RDF/Ontology/";
 		// Printing all CompoundNodes
 		solver.resolveCompound(parentNode, nameSpace).forEach(System.out::println);
+
+		// String query = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology>";
+		// query += " SELECT DISTINCT ?s ?p ?o ?e WHERE {?s ?p
+		// <http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_1>.";
+		// query+= "OPTIONAL { ?o <http://www.jade-hs.de#hatZimmer> ?e . } ";
+		// query+= "}";
+		// String query = "SELECT ?zimmer WHERE {?zimmer a
+		// <http://www.jade-hs.de/RDF/Ontology#Zimmer>. ";
+		// query += "FILTER STRENDS (str (?zimmer), 'Zimmer_2')";
+		// query+= "}";
+		// TDBPrinter.printSPARQLReq(query, dataset);
+
 	}
 
 	/**
@@ -101,7 +115,7 @@ public class OWLTDBManager {
 
 	/**
 	 * 
-	 * @param graphName 
+	 * @param graphName
 	 * @param creator
 	 */
 	public void loadGraph(String graphName, String creator) {
@@ -126,7 +140,6 @@ public class OWLTDBManager {
 		dataset.getDefaultModel().add(inf);
 	}
 
-	
 	/**
 	 * 
 	 */
@@ -138,5 +151,4 @@ public class OWLTDBManager {
 			System.out.println("Cannot find any RDF-model!");
 		}
 	}
-
 }

@@ -4,7 +4,12 @@ import java.util.List;
 
 public class OrOperator extends ConditionCompound {
 
-	private List<String> existanceCondition;
+	public OrOperator(String resourceUri) {
+		super(resourceUri);
+		// TODO Auto-generated constructor stub
+	}
+
+	private List<String> existanceConditions;
 	
 	@Override
 	public boolean resolve() {
@@ -14,10 +19,10 @@ public class OrOperator extends ConditionCompound {
 	}
 
 	public List<String> getExistanceCondition() {
-		return existanceCondition;
+		return existanceConditions;
 	}
 
 	public void setExistanceCondition(List<String> existanceCondition) {
-		this.existanceCondition = existanceCondition;
+		this.existanceConditions = existanceCondition;
 	}
 }
