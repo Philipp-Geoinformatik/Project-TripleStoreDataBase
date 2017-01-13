@@ -8,5 +8,6 @@ public abstract class Condition extends CompoundNode{
 	}
 
 	public abstract boolean resolve();
+	public abstract boolean resolve(CompoundNode cn);
 	
 }

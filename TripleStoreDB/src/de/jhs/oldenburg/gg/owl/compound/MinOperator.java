@@ -13,5 +13,10 @@ public class MinOperator extends ComparisonCondition {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean resolve(CompoundNode cn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

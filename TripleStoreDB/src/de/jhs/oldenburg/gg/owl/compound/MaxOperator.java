@@ -17,4 +17,10 @@ public class MaxOperator extends ComparisonCondition {
 		
 	}
 
+	@Override
+	public boolean resolve(CompoundNode cn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

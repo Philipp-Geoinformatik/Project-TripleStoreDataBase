@@ -13,6 +13,12 @@ public  class ConditionCompound extends Condition{
 		return false;
 	}
 
+	@Override
+	public boolean resolve(CompoundNode cn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 
 }

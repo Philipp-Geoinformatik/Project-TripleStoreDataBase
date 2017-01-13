@@ -79,20 +79,21 @@ public class OWLTDBManager {
 		// TDBPrinter.printModelContent(dataset);
 		CompoundResolver solver = new CompoundResolver(dataset);
 		String parentNode = "http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1";
-		String nameSpace = "http://www.jade-hs.de/RDF/Ontology/";
+		String nameSpace = "http://www.jade-hs.de/RDF/Ontology";
 		// Printing all CompoundNodes
 		solver.resolveCompound(parentNode, nameSpace).forEach(System.out::println);
 
-		// String query = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology>";
-		// query += " SELECT DISTINCT ?s ?p ?o ?e WHERE {?s ?p
-		// <http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_1>.";
+		
+		
+		String query = "";
+		 query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
 		// query+= "OPTIONAL { ?o <http://www.jade-hs.de#hatZimmer> ?e . } ";
 		// query+= "}";
 		// String query = "SELECT ?zimmer WHERE {?zimmer a
 		// <http://www.jade-hs.de/RDF/Ontology#Zimmer>. ";
 		// query += "FILTER STRENDS (str (?zimmer), 'Zimmer_2')";
 		// query+= "}";
-		// TDBPrinter.printSPARQLReq(query, dataset);
+		 TDBPrinter.printSPARQLReq(query, dataset);
 
 	}
 
