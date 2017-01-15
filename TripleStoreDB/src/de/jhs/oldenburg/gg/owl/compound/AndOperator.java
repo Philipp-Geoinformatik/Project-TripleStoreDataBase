@@ -2,13 +2,27 @@ package de.jhs.oldenburg.gg.owl.compound;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Philipp Grashorn From the master project of the Jade University of
+ *         applied science: TripleStoreDB
+ *
+ *         Creation date: 15.01.2017
+ *
+ */
 public class AndOperator extends ConditionCompound {
 
+	/**
+	 * 
+	 * @param resourceUri
+	 */
 	public AndOperator(String resourceUri) {
 		super(resourceUri);
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean resolve(CompoundNode cn) {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
@@ -32,5 +46,4 @@ public class AndOperator extends ConditionCompound {
 		System.out.println("=================AND END===================");
 		return result;
 	}
-
 }

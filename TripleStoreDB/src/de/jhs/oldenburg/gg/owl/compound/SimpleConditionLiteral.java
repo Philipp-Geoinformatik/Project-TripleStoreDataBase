@@ -1,6 +1,5 @@
 package de.jhs.oldenburg.gg.owl.compound;
 
-import java.util.ArrayList;
 
 /**
  * 
