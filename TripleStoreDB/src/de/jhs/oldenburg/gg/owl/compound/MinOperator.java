@@ -6,13 +6,7 @@ public class MinOperator extends ComparisonCondition {
 		super(resourceUri);
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public boolean resolve() {
-		
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
+
 	@Override
 	public boolean resolve(CompoundNode cn) {
 		// TODO Auto-generated method stub

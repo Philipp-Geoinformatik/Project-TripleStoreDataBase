@@ -7,11 +7,6 @@ public class NotOperator extends ConditionCompound {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean resolve() {
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

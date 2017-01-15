@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.apache.jena.base.Sys;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -158,9 +157,6 @@ public class CompoundResolver {
 	private ArrayList<CompoundNode> getCompoundNodesByNameSpace(CompoundNode parentNode, String nameSpace) {
 		ArrayList<CompoundNode> childNodes = new ArrayList<>();
 		ArrayList<String> predicates = getAllPredicatesOfNode(parentNode.getResourceUri(), nameSpace);
-		predicates.addAll(getAllPredicatesOfNode(parentNode.getResourceUri(), "http://www.w3.org/2001/XMLSchema#"));
-		//
-		predicates.forEach(a -> System.out.println(a + " <<<<<<<<<"));
 		try {
 			dataset.begin(ReadWrite.READ);
 			for (int j = 0; j < predicates.size(); j++) {
@@ -170,23 +166,13 @@ public class CompoundResolver {
 				ResultSet results = qexec.execSelect();
 				while (results.hasNext()) {
 					QuerySolution soln = results.nextSolution();
-					RDFNode o = soln.get("?o");
+					RDFNode node = soln.get("?o");
 					// get each object of the query result
-					if (o != null)
-						if (o.isResource()) {
-							Resource r2 = (Resource) o;
-							// System.out.println("SIMPLE OUT :"+r2);
-							CompoundNode n = new CompoundNode(r2.toString());
-							n.setParentNode(parentNode);
-							childNodes.add(n);
-						}
-					if (o.isLiteral()) {
-						Literal r2 = (Literal) o;
-						// System.out.println("SIMPLE OUT :"+r2);
-						CompoundNode n = new CompoundNode(r2.getDatatypeURI());
-						n.setParentNode(parentNode);
+					if (node != null) {
+						CompoundNode n = createCompoundNode(node, parentNode);
 						childNodes.add(n);
 					}
+
 				}
 			}
 		} catch (Exception e) {
@@ -277,7 +263,7 @@ public class CompoundResolver {
 		ArrayList<String> predicates = new ArrayList<>();
 		dataset.begin(ReadWrite.READ);
 		// Query to the Graph model
-		String query = "SELECT  DISTINCT ?p WHERE {<" + name + "> ?p ?o . filter strstarts(str (?p), '" + nameSpace + "')}";
+		String query = "SELECT DISTINCT ?p WHERE {<" + name + "> ?p ?o . filter strstarts(str (?p), '" + nameSpace + "')}";
 		//
 		try (QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel())) {
 			// get the result set
@@ -300,4 +286,41 @@ public class CompoundResolver {
 		}
 		return predicates;
 	}
+
+	/**
+	 * 
+	 * @param node
+	 * @param parentNode
+	 * @return
+	 */
+	private CompoundNode createCompoundNode(RDFNode node, CompoundNode parentNode) {
+		CompoundNode n = null;
+		if (node.isResource()) {
+			Resource r2 = (Resource) node;
+			// AND
+			if (r2.getURI().contains("UndOperator#") || r2.getURI().contains("AndOperator#")) {
+				n = new AndOperator(r2.toString());
+			} else if (r2.getURI().contains("OderOperator#") || r2.getURI().contains("OrOperator#")) {
+				n = new OrOperator(r2.toString());
+			} else if (r2.getURI().contains("NichtOperator#") || r2.getURI().contains("NotOperator#")) {
+				n = new NotOperator(r2.toString());
+			} else if (r2.getURI().contains("MaxOperator#")) {
+				n = new MaxOperator(r2.toString());
+			} else if (r2.getURI().contains("Existenzbedingung#") || r2.getURI().contains("ExistanceCondition#")) {
+				n = new ExistanceCondition(r2.toString());
+			} else
+				n = new CompoundNode(r2.toString());
+		}
+
+		if (node.isLiteral()) {
+			Literal r2 = (Literal) node;
+			System.out.println("SIMPLE OUT :" + r2);
+			n = new SimpleConditionLiteral(r2.getDatatypeURI(), r2.toString());
+		}
+
+		n.setParentNode(parentNode);
+		return n;
+	}
+
+	
 }

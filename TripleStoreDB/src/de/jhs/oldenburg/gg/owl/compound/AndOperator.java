@@ -10,24 +10,27 @@ public class AndOperator extends ConditionCompound {
 	}
 
 	@Override
-	public boolean resolve() {
-		return super.resolve();
-	}
-
-	@Override
 	public boolean resolve(CompoundNode cn) {
+		System.out.println("<<<TRYING TO RESOLVE>>> ");
+		System.out.println(this);
 		boolean result = false;
 		// Get the child nodes of this compound node
 		ArrayList<CompoundNode> childs = getChildNodes();
-
 		// wenn blatt element dann frage nach den Values
-		if(childs.isEmpty());//TODO
-		// sonst lasse die antwort von den childnodes geben!
-
+		if (childs.isEmpty())
+			System.err.println("AND need at least two child nodes");
+		// sonst lasse die antwort von den child nodes geben!
+		System.out.println("=================AND===================");
 		for (int i = 0; i < childs.size(); i++) {
-			if (!result)
+			System.out.println("AND LOOP <" + i + ">");
+			result = childs.get(i).resolve(cn);
+			if (!result) {// if false
 				result = false;
+				break;
+			}
 		}
+		System.out.println("=================AND END===================");
 		return result;
 	}
+
 }

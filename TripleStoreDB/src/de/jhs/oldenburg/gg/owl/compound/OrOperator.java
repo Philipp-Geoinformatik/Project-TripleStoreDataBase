@@ -9,14 +9,13 @@ public class OrOperator extends ConditionCompound {
 		// TODO Auto-generated constructor stub
 	}
 
-	private List<String> existanceConditions;
-	
 	@Override
-	public boolean resolve() {
-		return false;
+	public boolean resolve(CompoundNode cn) {
 		// TODO Auto-generated method stub
-
+		return super.resolve(cn);
 	}
+
+	private List<String> existanceConditions;
 
 	public List<String> getExistanceCondition() {
 		return existanceConditions;
