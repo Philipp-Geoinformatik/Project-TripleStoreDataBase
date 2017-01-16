@@ -101,11 +101,12 @@ public class CompoundNode {
 	public boolean resolve(CompoundNode cn) {
 		System.out.println("<<<TRYING TO RESOLVE>>>");
 		System.out.println(this);
-		for (CompoundNode c : childNodes) {
-			if (!c.resolve(cn))
-				return false;
+		if (childNodes.size() == 1)
+			return childNodes.get(0).resolve(cn);
+		else {
+			System.err.println(this + "\n\n Contains more than one child! Node: <"+resourceUri+"> doesn't follow the restrictions of a compound");
+			return false;
 		}
-		return true;
 	}
 
 	/**
@@ -134,7 +135,6 @@ public class CompoundNode {
 				cs = (SimpleConditionLiteral) n;
 				System.out.println("Looking at Literal: " + cs.getLiteral());
 				if (cs.getLiteral().contains(literal)) {
-					System.err.println("FOUND");
 					return true;
 				}
 			}

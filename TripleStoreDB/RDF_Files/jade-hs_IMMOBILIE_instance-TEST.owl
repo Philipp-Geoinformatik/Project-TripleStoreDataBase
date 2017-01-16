@@ -1,0 +1,54 @@
+<!DOCTYPE owl [
+<!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+<!ENTITY vin  "http://www.example.org/wine#" >
+<!ENTITY food "http://www.example.org/food#" >]>
+
+
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de/RDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
+        <owl:versionInfo>v1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://www.example.org/foo" />
+        <owl:priorVersion rdf:resource="http://ontoware.org/projects/swrc" />
+    </owl:Ontology>
+
+    <!-- Immobilie -->
+    <jhs:Immobilie rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1">
+        <jhs:hatBaulicheKennzahlen rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1" />
+        <jhs:hatBautyp rdf:resource="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1" />
+        <jhs:hatDach rdf:resource="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1" />
+        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1" />
+        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2" />
+        <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1" />
+    </jhs:Immobilie>
+
+    <!-- BaulicheKennzahlen  -->
+    <jhs:BaulicheKennzahlen rdf:about="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1">
+        <jhs:Alter>1917</jhs:Alter>
+        <jhs:Name>ciao</jhs:Name>
+        <jhs:Grundflaechenzahl>0.3</jhs:Grundflaechenzahl>
+        <jhs:AnzahlGeschosse>2</jhs:AnzahlGeschosse>
+    </jhs:BaulicheKennzahlen>
+
+    <!-- Dach Satteldach -->
+    <jhs:Satteldach rdf:about="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1">
+        <jhs:Alter>1995</jhs:Alter>
+        <jhs:DummerWert>hallo</jhs:DummerWert>
+    </jhs:Satteldach>
+
+    <!-- OffeneBauweise -->
+    <jhs:OffeneBauweise rdf:about="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1">
+    </jhs:OffeneBauweise>
+
+    <!-- Wohneinheit 1 -->
+    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1">
+        <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_1" />
+        <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_2" />
+        <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_3" />
+    </jhs:Wohneinheit>
+
+
+
+
+
+</rdf:RDF>

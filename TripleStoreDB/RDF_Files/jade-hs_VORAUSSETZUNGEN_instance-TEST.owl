@@ -1,0 +1,68 @@
+<rdf:RDF xmlns:jhs="http://www.jade-hs.de/RDF/Ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontologie fuer das Masterprojekt: Triplestore-Datenbank Wintersemester 16/17</rdfs:comment>
+        <owl:versionInfo>v1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://www.example.org/foo" />
+        <owl:priorVersion rdf:resource="http://ontoware.org/projects/swrc" />
+    </owl:Ontology>
+
+    <!-- Voraussetzung -->
+    <jhs:Voraussetzung rdf:about="http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1">
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_1" />
+        <!--jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_2" /-->
+        <!--jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1" /-->
+    </jhs:Voraussetzung>
+
+    <!-- UND 1-->
+    <jhs:UndOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_1">
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_1" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_2" />
+
+    </jhs:UndOperator>
+
+    <!-- UND2-->
+    <jhs:UndOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_2">
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_3" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_4" />
+    </jhs:UndOperator>
+
+    <!-- ODER 1-->
+    <jhs:OderOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1">
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_5" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_6" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_7" />
+    </jhs:OderOperator>
+
+
+    <!-- FUER DIE UNDS-->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_1">
+        <jhs:Name>hallo</jhs:Name>
+    </jhs:Existenzbedingung>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_2">
+        <jhs:Name>ciao</jhs:Name>
+    </jhs:Existenzbedingung>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_3">
+        <jhs:Name>0.3</jhs:Name>
+    </jhs:Existenzbedingung>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_4">
+        <jhs:Name>0.3</jhs:Name>
+    </jhs:Existenzbedingung>
+
+
+    <!-- FUER DIE ODERS-->
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_5">
+        <jhs:Name>?????????????????????</jhs:Name>
+    </jhs:Existenzbedingung>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_6">
+        <jhs:Name>?????????????????????</jhs:Name>
+    </jhs:Existenzbedingung>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_7">
+        <jhs:Name>0.3</jhs:Name>
+    </jhs:Existenzbedingung>
+
+
+
+
+
+</rdf:RDF>
