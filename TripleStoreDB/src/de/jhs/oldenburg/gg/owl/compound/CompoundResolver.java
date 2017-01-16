@@ -172,7 +172,6 @@ public class CompoundResolver {
 						CompoundNode n = createCompoundNode(node, parentNode);
 						childNodes.add(n);
 					}
-
 				}
 			}
 		} catch (Exception e) {
@@ -307,6 +306,9 @@ public class CompoundResolver {
 			} else if (r2.getURI().contains("MaxOperator#")) {
 				n = new MaxOperator(r2.toString());
 			} else if (r2.getURI().contains("Existenzbedingung#") || r2.getURI().contains("ExistanceCondition#")) {
+			} else if (r2.getURI().contains("MinOperator#")) {
+				n = new MinOperator(r2.toString());
+			} else if (r2.getURI().contains("Existenzbedingung#") || r2.getURI().contains("ExistanceCondition#")) {
 				n = new ExistanceCondition(r2.toString());
 			} else
 				n = new CompoundNode(r2.toString());
@@ -322,5 +324,4 @@ public class CompoundResolver {
 		return n;
 	}
 
-	
 }
