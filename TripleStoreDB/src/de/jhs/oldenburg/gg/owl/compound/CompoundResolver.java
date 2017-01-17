@@ -83,7 +83,8 @@ public class CompoundResolver {
 		String owl = "prefix owl: <http://www.w3.org/2002/07/owl#> ";
 		String jhs = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology#> ";
 		//
-		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + "SELECT DISTINCT  ?o  " + "WHERE { <" + parentNode + "> <" + predicate + "> ?o . }");
+		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + "SELECT DISTINCT  ?o  " + "WHERE { <"
+				+ parentNode + "> <" + predicate + "> ?o . }");
 
 		try (QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel())) {
 			// get the result set
@@ -122,7 +123,8 @@ public class CompoundResolver {
 		String owl = "prefix owl: <http://www.w3.org/2002/07/owl#> ";
 		String jhs = "prefix jhs: <http://www.jade-hs.de/RDF/Ontology#> ";
 		//
-		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + "SELECT DISTINCT  ?o  " + "WHERE { <" + parentNode.getResourceUri() + "> <" + predicate + "> ?o . }");
+		Query query = QueryFactory.create(rdf + rdfs + foaf + owl + jhs + "SELECT DISTINCT  ?o  " + "WHERE { <"
+				+ parentNode.getResourceUri() + "> <" + predicate + "> ?o . }");
 
 		try (QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel())) {
 			// get the result set
@@ -160,7 +162,8 @@ public class CompoundResolver {
 		try {
 			dataset.begin(ReadWrite.READ);
 			for (int j = 0; j < predicates.size(); j++) {
-				Query query = QueryFactory.create("SELECT DISTINCT  ?o  " + "WHERE { <" + parentNode.getResourceUri() + "> <" + predicates.get(j) + "> ?o . }");
+				Query query = QueryFactory.create("SELECT DISTINCT  ?o  " + "WHERE { <" + parentNode.getResourceUri()
+						+ "> <" + predicates.get(j) + "> ?o . }");
 				QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel());
 				// get the result set
 				ResultSet results = qexec.execSelect();
@@ -262,7 +265,8 @@ public class CompoundResolver {
 		ArrayList<String> predicates = new ArrayList<>();
 		dataset.begin(ReadWrite.READ);
 		// Query to the Graph model
-		String query = "SELECT DISTINCT ?p WHERE {<" + name + "> ?p ?o . filter strstarts(str (?p), '" + nameSpace + "')}";
+		String query = "SELECT DISTINCT ?p WHERE {<" + name + "> ?p ?o . filter strstarts(str (?p), '" + nameSpace
+				+ "')}";
 		//
 		try (QueryExecution qexec = QueryExecutionFactory.create(query, dataset.getDefaultModel())) {
 			// get the result set
@@ -305,7 +309,6 @@ public class CompoundResolver {
 				n = new NotOperator(r2.toString());
 			} else if (r2.getURI().contains("MaxOperator#")) {
 				n = new MaxOperator(r2.toString());
-			} else if (r2.getURI().contains("Existenzbedingung#") || r2.getURI().contains("ExistanceCondition#")) {
 			} else if (r2.getURI().contains("MinOperator#")) {
 				n = new MinOperator(r2.toString());
 			} else if (r2.getURI().contains("Existenzbedingung#") || r2.getURI().contains("ExistanceCondition#")) {
@@ -319,7 +322,6 @@ public class CompoundResolver {
 			System.out.println("SIMPLE OUT :" + r2);
 			n = new SimpleConditionLiteral(r2.getDatatypeURI(), r2.toString());
 		}
-
 		n.setParentNode(parentNode);
 		return n;
 	}

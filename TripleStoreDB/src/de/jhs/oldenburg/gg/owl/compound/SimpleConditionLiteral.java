@@ -1,5 +1,6 @@
 package de.jhs.oldenburg.gg.owl.compound;
 
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
 /**
  * 
@@ -20,12 +21,28 @@ public class SimpleConditionLiteral extends CompoundNode {
 	 * 
 	 */
 	@Override
-	public boolean resolve(CompoundNode cn) {
+	public boolean resolve(CompoundNode/* ComparisonObject */ cn) {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
 		System.out.println(this);
 		String lit = null;
+
+		// Vater FÜr existenzbendingungsname
+		// das literal selber
+		// suche in HashMap von ComparisonObjekt --> literal =
+		// Hashmap.get(existenzbendingungsname);
+
 		// search literal in the given tree cn
 		return compoundContains(literal, cn);
+	}
+
+	@Override
+	public boolean resolve(ComparisonObject cpv) {
+		System.out.println("<<<TRYING TO RESOLVE>>> ");
+		System.out.println(this);
+		String resUri = this.getParentNode().getResourceUri();
+		if (literal.equals(cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#")))))
+			return true;
+		return false;
 	}
 
 	/**

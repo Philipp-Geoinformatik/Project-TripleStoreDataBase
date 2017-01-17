@@ -1,5 +1,6 @@
 package de.jhs.oldenburg.gg.owl.compound;
 
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
 /**
  * 
@@ -41,9 +42,19 @@ public class ExistanceCondition extends CompoundNode {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
 		System.out.println(this);
 		// if (this.getChildNodes().get(0) instanceof SimpleConditionLiteral)
-		return this.getChildNodes().get(0).resolve(cn);
+		return getChildNodes().get(0).resolve(cn);
 		// else {
 		// return false;
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean resolve(ComparisonObject cpv) {
+		System.out.println("<<<TRYING TO RESOLVE>>> ");
+		System.out.println(this);
+		return getChildNodes().get(0).resolve(cpv.getRootNode());
 	}
 
 	/*

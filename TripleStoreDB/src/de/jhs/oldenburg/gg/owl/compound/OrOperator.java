@@ -2,6 +2,8 @@ package de.jhs.oldenburg.gg.owl.compound;
 
 import java.util.ArrayList;
 
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
+
 /**
  * 
  * @author Philipp Grashorn From the master project of the Jade University of
@@ -44,4 +46,27 @@ public class OrOperator extends ConditionCompound {
 		System.out.println("=================OR END===================");
 		return false;
 	}
+
+	@Override
+	public boolean resolve(ComparisonObject cpv) {
+		System.out.println("<<<TRYING TO RESOLVE>>> ");
+		System.out.println(this);
+		// Get the child nodes of this compound node
+		ArrayList<CompoundNode> childs = getChildNodes();
+		// wenn blatt element dann frage nach den Values
+		if (childs.isEmpty())
+			System.err.println("OR need at least two child nodes");
+		// sonst lasse die antwort von den child nodes geben!
+		System.out.println("=================OR===================");
+		for (int j = 0; j < childs.size(); j++) {
+			System.out.println("OR LOOP <" + j + ">");
+			if (childs.get(j).resolve(cpv.getRootNode())) {
+				System.out.println("=================OR END===================");
+				return true;
+			}
+		}
+		System.out.println("=================OR END===================");
+		return false;
+	}
+
 }

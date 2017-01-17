@@ -83,9 +83,11 @@ public class OWLTDBManager {
 		// System.out.println(solver.getValueOf("Existenzbedingung_8",
 		// l.get(0)));
 		// TestQuery
+		// ImmoResolver(immo) -->HashMap<String><Integer> countedInstances(param); 
 		String query = "";
 		query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
 		CompoundEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
+		//CompoundEvaluator.evaluate(vorraussetzung, new ImmoResolver);
 	}
 
 	/**

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.apache.jena.rdf.model.Literal;
 
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
+
 /**
  * 
  * @author Philipp Grashorn <br>
@@ -104,7 +106,25 @@ public class CompoundNode {
 		if (childNodes.size() == 1)
 			return childNodes.get(0).resolve(cn);
 		else {
-			System.err.println(this + "\n\n Contains more than one child! Node: <"+resourceUri+"> doesn't follow the restrictions of a compound");
+			System.err.println(this + "\n\n Contains more than one child! Node: <" + resourceUri
+					+ "> doesn't follow the restrictions of a compound");
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param cpv
+	 * @return
+	 */
+	public boolean resolve(ComparisonObject cpv) {
+		System.out.println("<<<TRYING TO RESOLVE>>>");
+		System.out.println(this);
+		if (childNodes.size() == 1)
+			return childNodes.get(0).resolve(cpv);
+		else {
+			System.err.println(this + "\n\n Contains more than one child! Node: <" + resourceUri
+					+ "> doesn't follow the restrictions of a compound");
 			return false;
 		}
 	}

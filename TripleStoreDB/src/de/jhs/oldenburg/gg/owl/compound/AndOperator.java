@@ -2,6 +2,8 @@ package de.jhs.oldenburg.gg.owl.compound;
 
 import java.util.ArrayList;
 
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
+
 /**
  * 
  * @author Philipp Grashorn From the master project of the Jade University of
@@ -38,6 +40,33 @@ public class AndOperator extends ConditionCompound {
 		for (int i = 0; i < childs.size(); i++) {
 			System.out.println("AND LOOP <" + i + ">");
 			result = childs.get(i).resolve(cn);
+			if (!result) {// if false
+				result = false;
+				break;
+			}
+		}
+		System.out.println("=================AND END===================");
+		return result;
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean resolve(ComparisonObject cpv) {
+		System.out.println("<<<TRYING TO RESOLVE>>> ");
+		System.out.println(this);
+		boolean result = false;
+		// Get the child nodes of this compound node
+		ArrayList<CompoundNode> childs = getChildNodes();
+		// wenn blatt element dann frage nach den Values
+		if (childs.isEmpty())
+			System.err.println("AND need at least two child nodes");
+		// sonst lasse die antwort von den child nodes geben!
+		System.out.println("=================AND===================");
+		for (int i = 0; i < childs.size(); i++) {
+			System.out.println("AND LOOP <" + i + ">");
+			result = childs.get(i).resolve(cpv.getRootNode());
 			if (!result) {// if false
 				result = false;
 				break;
