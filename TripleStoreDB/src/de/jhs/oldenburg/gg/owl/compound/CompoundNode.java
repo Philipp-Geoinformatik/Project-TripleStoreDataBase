@@ -90,8 +90,7 @@ public class CompoundNode {
 				str += "| CHILD: <" + compoundNode.getResourceUri() + "> \n";
 			}
 		}
-		str += "<x";
-		System.out.println();
+		str += "<x\n";
 		return str;
 	}
 
@@ -102,7 +101,7 @@ public class CompoundNode {
 	 */
 	public boolean resolve(CompoundNode cn) {
 		System.out.println("<<<TRYING TO RESOLVE>>>");
-		System.out.println(this);
+		System.out.print(this);
 		if (childNodes.size() == 1)
 			return childNodes.get(0).resolve(cn);
 		else {
@@ -119,7 +118,7 @@ public class CompoundNode {
 	 */
 	public boolean resolve(ComparisonObject cpv) {
 		System.out.println("<<<TRYING TO RESOLVE>>>");
-		System.out.println(this);
+		System.out.print(this);
 		if (childNodes.size() == 1)
 			return childNodes.get(0).resolve(cpv);
 		else {

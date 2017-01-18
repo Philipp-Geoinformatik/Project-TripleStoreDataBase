@@ -54,7 +54,7 @@ public class ExistanceCondition extends CompoundNode {
 	public boolean resolve(ComparisonObject cpv) {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
 		System.out.println(this);
-		return getChildNodes().get(0).resolve(cpv.getRootNode());
+		return getChildNodes().get(0).resolve(cpv);
 	}
 
 	/*

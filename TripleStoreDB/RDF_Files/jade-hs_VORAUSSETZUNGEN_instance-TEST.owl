@@ -16,8 +16,8 @@
     <!-- UND 1-->
     <jhs:UndOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/UndOperator#UndOperator_1">
         <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1" />
-        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_1" />
-        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_2" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#GeschossAnzahl" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#ImmobilieAlter" />
 
     </jhs:UndOperator>
 
@@ -29,24 +29,23 @@
 
     <!-- ODER 1-->
     <jhs:OderOperator rdf:about="http://www.jade-hs.de/RDF/Ontology/OderOperator#OderOperator_1">
-        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_5" />
-        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_6" />
-        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_7" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#WohneinheitenAnzahl" />
+        <jhs:umfasst rdf:resource="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#GFZ" />
     </jhs:OderOperator>
 
 
     <!-- FUER DIE UNDS-->
-    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_1">
-        <jhs:Name>hallo</jhs:Name>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#GeschossAnzahl">
+        <jhs:Name>2</jhs:Name>
     </jhs:Existenzbedingung>
-    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_2">
-        <jhs:Name>ciao</jhs:Name>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#ImmobilieAlter">
+        <jhs:Name>1917</jhs:Name>
     </jhs:Existenzbedingung>
-    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_3">
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#GFZ">
         <jhs:Name>0.3</jhs:Name>
     </jhs:Existenzbedingung>
-    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#Existenzbedingung_4">
-        <jhs:Name>0.3</jhs:Name>
+    <jhs:Existenzbedingung rdf:about="http://www.jade-hs.de/RDF/Ontology/Existenzbedingung#WohneinheitenAnzahl">
+        <jhs:Name>1</jhs:Name>
     </jhs:Existenzbedingung>
 
 

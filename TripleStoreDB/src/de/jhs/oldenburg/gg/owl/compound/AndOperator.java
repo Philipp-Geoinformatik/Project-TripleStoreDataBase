@@ -66,7 +66,7 @@ public class AndOperator extends ConditionCompound {
 		System.out.println("=================AND===================");
 		for (int i = 0; i < childs.size(); i++) {
 			System.out.println("AND LOOP <" + i + ">");
-			result = childs.get(i).resolve(cpv.getRootNode());
+			result = childs.get(i).resolve(cpv);
 			if (!result) {// if false
 				result = false;
 				break;

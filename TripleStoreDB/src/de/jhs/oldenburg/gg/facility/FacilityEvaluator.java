@@ -1,19 +1,22 @@
-package de.jhs.oldenburg.gg.owl.compound;
+package de.jhs.oldenburg.gg.facility;
 
 import java.util.ArrayList;
 
-import de.jhs.oldenburg.gg.facility.Facility;
+import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
+import de.jhs.oldenburg.gg.owl.compound.SimpleConditionLiteral;
 import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
-public class CompoundEvaluator {
+public class FacilityEvaluator {
 
 	public static void evaluate(CompoundNode c1, CompoundNode c2) {
-		
+
 		ComparisonObject comObject = new Facility(c2);
 
 		boolean result = false;
-		result = c1.resolve(c2);
-		System.out.println("Evaluation result : <" + result + ">");
+		System.out.println("Xx============================EVALUATION START============================xX");
+		result = c1.resolve(comObject);
+		System.out.println("\nEvaluation result : <" + result + ">");
+		System.out.println("Xx============================EVALUATION END============================xX");
 	}
 
 	/**

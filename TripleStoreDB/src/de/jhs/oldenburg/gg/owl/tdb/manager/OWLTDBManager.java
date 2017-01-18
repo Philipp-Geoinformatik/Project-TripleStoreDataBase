@@ -15,10 +15,9 @@ import org.apache.jena.vocabulary.DCTerms;
 import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
 
-import de.jhs.oldenburg.gg.owl.compound.CompoundEvaluator;
+import de.jhs.oldenburg.gg.facility.FacilityEvaluator;
 import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
 import de.jhs.oldenburg.gg.owl.compound.CompoundResolver;
-import de.jhs.oldenburg.gg.tdb.utils.TDBPrinter;
 
 /**
  * 
@@ -78,16 +77,9 @@ public class OWLTDBManager {
 		// Printing all CompoundNodes
 		ArrayList<CompoundNode> vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
 		ArrayList<CompoundNode> immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
-		//vorraussetzung.forEach(System.out::println);
-		//
-		// System.out.println(solver.getValueOf("Existenzbedingung_8",
-		// l.get(0)));
-		// TestQuery
-		// ImmoResolver(immo) -->HashMap<String><Integer> countedInstances(param); 
-		String query = "";
-		query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
-		CompoundEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
-		//CompoundEvaluator.evaluate(vorraussetzung, new ImmoResolver);
+		//String query = "";
+		//query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
+		FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
 	}
 
 	/**
@@ -126,7 +118,6 @@ public class OWLTDBManager {
 	 */
 	public void createOntology(String source) {
 		// create the base model
-		String namespace = source + "#";
 		OntModel base = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
 		// create the reasoning model using the base
 		OntModel inf = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, base);

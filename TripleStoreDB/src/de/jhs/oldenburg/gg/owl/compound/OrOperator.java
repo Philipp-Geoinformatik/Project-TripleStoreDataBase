@@ -60,7 +60,7 @@ public class OrOperator extends ConditionCompound {
 		System.out.println("=================OR===================");
 		for (int j = 0; j < childs.size(); j++) {
 			System.out.println("OR LOOP <" + j + ">");
-			if (childs.get(j).resolve(cpv.getRootNode())) {
+			if (childs.get(j).resolve(cpv)) {
 				System.out.println("=================OR END===================");
 				return true;
 			}

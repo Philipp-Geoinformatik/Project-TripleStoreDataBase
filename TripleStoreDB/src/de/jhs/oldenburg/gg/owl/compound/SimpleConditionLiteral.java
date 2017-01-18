@@ -21,26 +21,23 @@ public class SimpleConditionLiteral extends CompoundNode {
 	 * 
 	 */
 	@Override
-	public boolean resolve(CompoundNode/* ComparisonObject */ cn) {
+	public boolean resolve(CompoundNode cn) {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
 		System.out.println(this);
-		String lit = null;
-
-		// Vater FÜr existenzbendingungsname
-		// das literal selber
-		// suche in HashMap von ComparisonObjekt --> literal =
-		// Hashmap.get(existenzbendingungsname);
-
 		// search literal in the given tree cn
 		return compoundContains(literal, cn);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean resolve(ComparisonObject cpv) {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
-		System.out.println(this);
+		System.out.print(this);
 		String resUri = this.getParentNode().getResourceUri();
-		if (literal.equals(cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#")))))
+		System.out.println("Comparison: " + literal + "==" + cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#") + 1)) + "\n\n");
+		if (literal.equals(cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#") + 1))))
 			return true;
 		return false;
 	}
@@ -84,7 +81,7 @@ public class SimpleConditionLiteral extends CompoundNode {
 				str += "|  CHILD: <" + compoundNode.getResourceUri() + "> \n";
 			}
 		}
-		str += "<x";
+		str += "<x\n";
 		System.out.println();
 		return str;
 	}

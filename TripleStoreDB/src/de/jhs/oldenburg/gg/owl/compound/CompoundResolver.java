@@ -320,7 +320,7 @@ public class CompoundResolver {
 
 		if (node.isLiteral()) {
 			Literal r2 = (Literal) node;
-			System.out.println("SIMPLE OUT :" + r2.getString());
+			//System.out.println("SIMPLE OUT :" + r2.getString());
 			n = new SimpleConditionLiteral(r2.getDatatypeURI(), r2.getString());
 		}
 		n.setParentNode(parentNode);
