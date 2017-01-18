@@ -24,21 +24,26 @@
 
     <!-- BaulicheKennzahlen  -->
     <jhs:BaulicheKennzahlen rdf:about="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1">
-        <jhs:Alter>1917</jhs:Alter>
-        <jhs:Name>ciao</jhs:Name>
-        <jhs:Grundflaechenzahl>0.3</jhs:Grundflaechenzahl>
-        <jhs:AnzahlGeschosse>2</jhs:AnzahlGeschosse>
+        <jhs:Alter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Alter#Alter">1917</jhs:Alter>
+        <jhs:Name rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Name#Name">ciao</jhs:Name>
+        <jhs:Grundflaechenzahl rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Grundflaechenzahl#Grundflaechenzahl">0.3</jhs:Grundflaechenzahl>
+        <jhs:AnzahlGeschosse rdf:datatype="http://www.jade-hs.de/RDF/Ontology/AnzahlGeschosse#AnzahlGeschosse">2</jhs:AnzahlGeschosse>
     </jhs:BaulicheKennzahlen>
 
     <!-- Dach Satteldach -->
     <jhs:Satteldach rdf:about="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1">
-        <jhs:Alter>1995</jhs:Alter>
-        <jhs:DummerWert>hallo</jhs:DummerWert>
+        <jhs:Alter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Alter#Alter">1995</jhs:Alter>
+        <jhs:DummerWert rdf:datatype="http://www.jade-hs.de/RDF/Ontology/DummerWert#DummerWert">hallo</jhs:DummerWert>
     </jhs:Satteldach>
 
     <!-- OffeneBauweise -->
     <jhs:OffeneBauweise rdf:about="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1">
     </jhs:OffeneBauweise>
+    
+    <!-- Etage 1 -->
+    <jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1">
+        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Wohneinheit#Wohneinheit_1" />
+    </jhs:Etage>
 
     <!-- Wohneinheit 1 -->
     <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1">
@@ -46,8 +51,6 @@
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_2" />
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_3" />
     </jhs:Wohneinheit>
-
-
 
 
 

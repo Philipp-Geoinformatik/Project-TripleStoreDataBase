@@ -1,8 +1,11 @@
 package de.jhs.oldenburg.gg.owl.parser;
 
-import com.github.andrewoma.dexx.collection.HashMap;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
+import de.jhs.oldenburg.gg.owl.compound.SimpleConditionLiteral;
 
 public abstract class ComparisonObject {
 
@@ -12,6 +15,7 @@ public abstract class ComparisonObject {
 	public ComparisonObject(CompoundNode rootNode) {
 		super();
 		this.rootNode = rootNode;
+		properties= new HashMap<>();
 	}
 
 	public HashMap<String, String> getProperties() {

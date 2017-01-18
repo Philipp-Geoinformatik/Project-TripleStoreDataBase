@@ -172,6 +172,7 @@ public class CompoundResolver {
 					RDFNode node = soln.get("?o");
 					// get each object of the query result
 					if (node != null) {
+						
 						CompoundNode n = createCompoundNode(node, parentNode);
 						childNodes.add(n);
 					}
@@ -319,8 +320,8 @@ public class CompoundResolver {
 
 		if (node.isLiteral()) {
 			Literal r2 = (Literal) node;
-			System.out.println("SIMPLE OUT :" + r2);
-			n = new SimpleConditionLiteral(r2.getDatatypeURI(), r2.toString());
+			System.out.println("SIMPLE OUT :" + r2.getString());
+			n = new SimpleConditionLiteral(r2.getDatatypeURI(), r2.getString());
 		}
 		n.setParentNode(parentNode);
 		return n;

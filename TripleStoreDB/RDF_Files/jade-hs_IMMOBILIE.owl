@@ -174,10 +174,8 @@
         <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizkoerper" />
     </owl:Class>
     <!-- Alter  -->
-    <owl:DatatypeProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/Alter">
-        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Fenster" />
-        <rdfs:range rdf:resource="&xsd;string" />
-    </owl:DatatypeProperty>
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Alter">
+    </owl:Class>
     <!-- Grundflaechenzahl  -->
     <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Grundflaechenzahl">
     </owl:Class>
@@ -279,6 +277,10 @@
     </owl:ObjectProperty>
 
     <!-- EIGENSCHAFTEN -->
+    <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/Alter">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/Grundflaechenzahl">
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen" />
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />

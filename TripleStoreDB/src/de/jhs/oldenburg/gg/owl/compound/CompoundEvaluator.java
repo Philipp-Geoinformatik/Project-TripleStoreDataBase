@@ -2,9 +2,14 @@ package de.jhs.oldenburg.gg.owl.compound;
 
 import java.util.ArrayList;
 
+import de.jhs.oldenburg.gg.facility.Facility;
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
+
 public class CompoundEvaluator {
 
 	public static void evaluate(CompoundNode c1, CompoundNode c2) {
+		
+		ComparisonObject comObject = new Facility(c2);
 
 		boolean result = false;
 		result = c1.resolve(c2);
