@@ -33,13 +33,12 @@
     <!-- Dach Satteldach -->
     <jhs:Satteldach rdf:about="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1">
         <jhs:Alter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Alter#Alter">1995</jhs:Alter>
-        <jhs:DummerWert rdf:datatype="http://www.jade-hs.de/RDF/Ontology/DummerWert#DummerWert">hallo</jhs:DummerWert>
     </jhs:Satteldach>
 
     <!-- OffeneBauweise -->
     <jhs:OffeneBauweise rdf:about="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1">
     </jhs:OffeneBauweise>
-    
+
     <!-- Etage 1 -->
     <jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1">
         <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Wohneinheit#Wohneinheit_1" />
@@ -51,6 +50,21 @@
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_2" />
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_3" />
     </jhs:Wohneinheit>
+    <!--==================================================================== -->
+    <!--==================================================================== -->
+    <!--==================================================================== -->
+    <!--==================================================================== -->
+    <!--==================================================================== -->
+    <!-- Immobilie -->
+    <jhs:Immobilie rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_2">
+        <jhs:hatBaulicheKennzahlen rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1" />
+        <jhs:hatBautyp rdf:resource="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1" />
+        <jhs:hatDach rdf:resource="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1" />
+        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1" />
+        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2" />
+        <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1" />
+    </jhs:Immobilie>
+
 
 
 
