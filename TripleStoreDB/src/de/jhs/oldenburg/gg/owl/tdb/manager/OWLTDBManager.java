@@ -15,9 +15,12 @@ import org.apache.jena.vocabulary.DCTerms;
 import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
 
+import de.jhs.oldenburg.gg.facility.Facility;
 import de.jhs.oldenburg.gg.facility.FacilityEvaluator;
 import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
 import de.jhs.oldenburg.gg.owl.compound.CompoundResolver;
+import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
+import de.jhs.oldenburg.gg.requirement.Requirement;
 
 /**
  * 
@@ -62,12 +65,12 @@ public class OWLTDBManager {
 		deleteModel();
 		// loadGraph(GRAPH_NAME, "I_AM_THE_CREATOR");
 		// Voraussetzungen
-		// createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN.owl");
+		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN.owl");
 		// createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance.owl");
 		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance-TEST.owl");
 
 		// Immobilien
-		// createOntology("RDF_Files/jade-hs_IMMOBILIE.owl");
+		createOntology("RDF_Files/jade-hs_IMMOBILIE.owl");
 		// createOntology("RDF_Files/jade-hs_IMMOBILIE_instance.owl");
 		createOntology("RDF_Files/jade-hs_IMMOBILIE_instance-TEST.owl");
 
@@ -75,11 +78,14 @@ public class OWLTDBManager {
 		CompoundResolver solver = new CompoundResolver(dataset);
 		String nameSpace = "http://www.jade-hs.de/RDF/Ontology";
 		// Printing all CompoundNodes
-		ArrayList<CompoundNode> vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
-		ArrayList<CompoundNode> immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
+		CompoundNode vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
+		CompoundNode immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
 		//String query = "";
 		//query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
-		FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
+		Facility facility = new Facility("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1",dataset);
+		Requirement requirement = new Requirement(vorraussetzung);
+		FacilityEvaluator.evaluate(requirement.getRootNode(), facility);
+		//FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
 	}
 
 	/**

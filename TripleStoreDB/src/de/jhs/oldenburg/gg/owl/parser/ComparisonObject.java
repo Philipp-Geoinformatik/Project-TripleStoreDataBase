@@ -4,6 +4,8 @@ package de.jhs.oldenburg.gg.owl.parser;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.jena.query.Dataset;
+
 import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
 import de.jhs.oldenburg.gg.owl.compound.SimpleConditionLiteral;
 
@@ -11,6 +13,22 @@ public abstract class ComparisonObject {
 
 	private HashMap<String, String> properties;
 	private CompoundNode rootNode;
+	private Dataset dataset;
+	private String resourceUri;
+	
+	protected Dataset getDataset() {
+		return dataset;
+	}
+
+	protected void setDataset(Dataset dataset) {
+		this.dataset = dataset;
+	}
+
+	public ComparisonObject(Dataset dataset){
+		super();
+		this.dataset=dataset;
+		properties= new HashMap<>();
+	}
 
 	public ComparisonObject(CompoundNode rootNode) {
 		super();
@@ -32,6 +50,14 @@ public abstract class ComparisonObject {
 
 	public void setRootNode(CompoundNode rootNode) {
 		this.rootNode = rootNode;
+	}
+
+	public String getResourceUri() {
+		return resourceUri;
+	}
+
+	public void setResourceUri(String resourceUri) {
+		this.resourceUri = resourceUri;
 	}
 
 }

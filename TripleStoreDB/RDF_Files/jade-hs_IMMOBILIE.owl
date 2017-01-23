@@ -32,14 +32,14 @@
                 </owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
+       <!-- <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology/hatEtage" />
                 <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
                     1
                 </owl:minCardinality>
             </owl:Restriction>
-        </rdfs:subClassOf>
+        </rdfs:subClassOf> -->
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology/hatBautyp" />
@@ -83,24 +83,24 @@
     </owl:Class>
     <!-- Gebaeudeeinheit  -->
     <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Gebaeudeeinheit">
-        <rdfs:subClassOf>
+       <!-- <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.jade-hs.de/RDF/Ontology/hatZimmer" />
                 <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
                     1
                 </owl:minCardinality>
             </owl:Restriction>
-        </rdfs:subClassOf>
+        </rdfs:subClassOf> -->
     </owl:Class>
     <!-- PersonelleKennzahlen  -->
     <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/PersonelleKennzahlen">
     </owl:Class>
-    <!-- Wohneinheit -->
-    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit">
+    <!-- Geschaeftseinheit  -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Geschaeftseinheit">
         <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Gebaeudeeinheit" />
     </owl:Class>
-    <!-- Geschaefseinheit  -->
-    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Geschaefseinheit">
+    <!-- Wohneinheit -->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit">
         <rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Gebaeudeeinheit" />
     </owl:Class>
     <!-- Heizung  -->

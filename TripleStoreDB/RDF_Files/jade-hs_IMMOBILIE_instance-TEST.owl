@@ -41,8 +41,20 @@
 
     <!-- Etage 1 -->
     <jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1">
-        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Wohneinheit#Wohneinheit_1" />
+        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1" />
+        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Geschaeftseinheit#Geschaeftseinheit_1" />
     </jhs:Etage>
+    
+    <!-- Etage 2 -->
+    <jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2">
+        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2" />
+        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_3" />
+    </jhs:Etage>
+    
+    <jhs:Geschaeftseinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Geschaeftseinheit#Geschaeftseinheit_1"/>
+    
+    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2"/>
+    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_3"/>
 
     <!-- Wohneinheit 1 -->
     <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1">
@@ -56,14 +68,14 @@
     <!--==================================================================== -->
     <!--==================================================================== -->
     <!-- Immobilie -->
-    <jhs:Immobilie rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_2">
-        <jhs:hatBaulicheKennzahlen rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1" />
-        <jhs:hatBautyp rdf:resource="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_1" />
-        <jhs:hatDach rdf:resource="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_1" />
-        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1" />
-        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2" />
-        <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1" />
-    </jhs:Immobilie>
+    <!--<jhs:Immobilie rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_2">
+        <jhs:hatBaulicheKennzahlen rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_2" />
+        <jhs:hatBautyp rdf:resource="http://www.jade-hs.de/RDF/Ontology/OffeneBauweise#OffeneBauweise_2" />
+        <jhs:hatDach rdf:resource="http://www.jade-hs.de/RDF/Ontology/Satteldach#Satteldach_2" />
+        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_3" />
+        <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_4" />
+        <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_2" />
+    </jhs:Immobilie>-->
 
 
 

@@ -236,7 +236,7 @@ public class CompoundResolver {
 	 * 
 	 * @return
 	 */
-	public ArrayList<CompoundNode> resolveCompound(String parentNode, String nameSpace) {
+	public CompoundNode resolveCompound(String parentNode, String nameSpace) {
 		// Boolean for breaking the loop
 		int i = 0;
 		// List for values
@@ -245,7 +245,7 @@ public class CompoundResolver {
 		while (true) {
 			// function for recursion
 			if (i == nodes.size())// break condition
-				return nodes;
+				return nodes.get(0);
 			// do the logical things for getting the child elements
 			ArrayList<CompoundNode> n = this.getCompoundNodesByNameSpace(nodes.get(i), nameSpace);
 			// System.out.println(n);
