@@ -18,9 +18,17 @@ public class MaxOperator extends ComparisonCondition {
 	 */
 	@Override
 	public boolean resolve(CompoundNode cn) {
-		String lit = ((SimpleConditionLiteral) getChildNodes().get(0).getChildNodes().get(0)).getLiteral();
-		
-		return false;
+		String propName = getChildNodes().get(0).getResourceUri();
+		propName = propName.substring(propName.lastIndexOf("#"));
+		Double lit = Double.parseDouble(((SimpleConditionLiteral) getChildNodes().get(0).getChildNodes().get(0)).getLiteral());
+		Double v = null;
+		if (cn instanceof ExistanceCondition)
+			v = Double.parseDouble(((SimpleConditionLiteral) cn.getChildNodes().get(0)).getLiteral());
+
+		if (lit <= v)
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -30,8 +38,7 @@ public class MaxOperator extends ComparisonCondition {
 	public boolean resolve(ComparisonObject cpv) {
 		String propName = getChildNodes().get(0).getResourceUri();
 		propName = propName.substring(propName.lastIndexOf("#"));
-		Double lit = Double
-				.parseDouble(((SimpleConditionLiteral) getChildNodes().get(0).getChildNodes().get(0)).getLiteral());
+		Double lit = Double.parseDouble(((SimpleConditionLiteral) getChildNodes().get(0).getChildNodes().get(0)).getLiteral());
 		Double v = Double.parseDouble(cpv.getProperties().get(propName));
 
 		if (lit <= v)
