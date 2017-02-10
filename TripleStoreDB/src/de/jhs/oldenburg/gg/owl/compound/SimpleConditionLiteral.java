@@ -4,10 +4,11 @@ import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
 /**
  * 
- * @author Philipp Grashorn From the master project of the Jade University of
- *         applied science: TripleStoreDB
- *
- *         Creation date: 14.01.2017
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
  *
  */
 public class SimpleConditionLiteral extends CompoundNode {

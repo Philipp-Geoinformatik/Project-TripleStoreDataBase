@@ -8,6 +8,15 @@ import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
 import de.jhs.oldenburg.gg.owl.compound.SimpleConditionLiteral;
 import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
+/**
+ * 
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
+ *
+ */
 public class FacilityEvaluator {
 	
 	public static void evaluate(CompoundNode c1, Facility facility){

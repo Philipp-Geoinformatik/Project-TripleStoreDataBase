@@ -16,29 +16,21 @@ import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
 import de.jhs.oldenburg.gg.owl.compound.SimpleConditionLiteral;
 import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
+
 /**
  * 
- * @author Et. Al. From the master project of the Jade University of applied
- *         science: TripleStoreDB
- *
- *         Creation date: 18.01.2017
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
  *
  */
 public class Facility extends ComparisonObject {
 
-	// --Instance-Test--
-	// Hausalter
-	// Grundfl�chenzahl
-	// Geschosszahl
-	// Dachtyp
-	// Dachalter
-	// Bauweise
-	// Wohneinheitszahl
-	// Anzahl Zimmer
-
 	/**
-	 * @Override
-	 * Create facility with the rootNode, that represent the facility itself.
+	 * Facility with the rootNode, that represent the facility itself.
+	 * This class implements methods for requesting its properties by SPARQL from a given database or by analyzing its given rootNode.
 	 * @param rootNode
 	 */
 	public Facility(CompoundNode rootNode) {
@@ -55,43 +47,42 @@ public class Facility extends ComparisonObject {
 		System.out.println("<x");
 		System.out.println("XX>-----------------------<XX\n\n\n");
 	}
-	
+
 	/**
-	 * @Override
-	 * Create the facility by giving the whole dataset.
+	 * Facility with an given triple store database reference.
 	 * @param dataset
 	 */
-	public Facility(String resourceUri,Dataset dataset){
+	public Facility(String resourceUri, Dataset dataset) {
 		super(dataset);
 		this.setResourceUri(resourceUri);
 		this.getDataset().begin(ReadWrite.READ);
-		try{
-		this.getProperties().put("ImmobilieAlter", getFacilityAgeByDataset());
-		this.getProperties().put("GFZ", getGFZByDataset());
-		this.getProperties().put("GeschossAnzahl", countFloorsByDataset());
-		this.getProperties().put("WohneinheitenAnzahl", countLivingAreasByDataset());
-		this.getProperties().put("GeschaeftseinheitenAnzahl", countBusinessAreasByDataset());
+		try {
+			this.getProperties().put("ImmobilieAlter", getFacilityAgeByDataset());
+			this.getProperties().put("GFZ", getGFZByDataset());
+			this.getProperties().put("GeschossAnzahl", countFloorsByDataset());
+			this.getProperties().put("WohneinheitenAnzahl", countLivingAreasByDataset());
+			this.getProperties().put("GeschaeftseinheitenAnzahl", countBusinessAreasByDataset());
 		} finally {
 			this.getDataset().end();
 		}
-		
+
 		System.out.println("XX>--FACILITY PROPERTIES--<XX\nx>");
 		for (String s : this.getProperties().keySet())
 			System.out.println("| " + s + " ||| " + this.getProperties().get(s));
 		System.out.println("<x");
 		System.out.println("XX>-----------------------<XX\n\n\n");
-		
-		
+
 	}
-	
+
 	/**
-	 * Function that create the Literalobject as a String from a SPARQL request
+	 * Function that creates the Literal as a String from a SPARQL request
+	 * 
 	 * @param queryString
 	 * @return
 	 */
-	private String executeQuery(String queryString){
-		if(this.getDataset().supportsTransactions()){
-		// Query to the Graph model
+	private String executeQuery(String queryString) {
+		if (this.getDataset().supportsTransactions()) {
+			// Query to the Graph model
 			String rdf = "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ";
 			String rdfs = "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> ";
 			String foaf = "prefix foaf: <http://xmlns.com/foaf/0.1/> ";
@@ -101,18 +92,18 @@ public class Facility extends ComparisonObject {
 			try (QueryExecution qexec = QueryExecutionFactory.create(q, this.getDataset().getDefaultModel())) {
 				// get the result set
 				ResultSet results = qexec.execSelect();
-				while(results.hasNext()){
+				while (results.hasNext()) {
 					QuerySolution soln = results.nextSolution();
 					RDFNode o = soln.get("?RESULT");
 					// get each object of the query result
-					if (o != null && o.isLiteral()){
-					Literal literal=(Literal) o;
-					return literal.getString();
+					if (o != null && o.isLiteral()) {
+						Literal literal = (Literal) o;
+						return literal.getString();
 					} else
 						return null;
 				}
 				return null;
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
@@ -121,7 +112,8 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * return the age of the facility
+	 * returns the age of the facility
+	 * 
 	 * @return
 	 */
 	private String getFacilityAgeByNode() {
@@ -141,7 +133,8 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * return the GFZ of the facility
+	 * returns the GFZ of the facility
+	 * 
 	 * @return
 	 */
 	private String getGFZByNode() {
@@ -161,7 +154,8 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * count the floors of the facility
+	 * Counts the floors of the facility
+	 * 
 	 * @return
 	 */
 	private String countFloorsByNode() {
@@ -179,7 +173,8 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * Count the Living-Areas of the facility
+	 * Counts the Living-Areas of the facility
+	 * 
 	 * @return
 	 */
 	private String countLivingAreasByNode() {
@@ -200,7 +195,7 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * Count the Business-Areas of the facility
+	 * Counts the Business-Areas of the facility
 	 */
 	private String countBusinessAreasByNode() {
 		String result = null;
@@ -218,14 +213,14 @@ public class Facility extends ComparisonObject {
 		else
 			return result;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @return
 	 */
 	private String getFacilityAgeByDataset() {
-		return executeQuery("SELECT (?o AS ?RESULT) WHERE {<"+this.getResourceUri()+"> <http://www.jade-hs.de/RDF/Ontology#hatBaulicheKennzahlen> ?z. ?z <http://www.jade-hs.de/RDF/Ontology#Alter> ?o.}");
+		return executeQuery("SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatBaulicheKennzahlen> ?z. ?z <http://www.jade-hs.de/RDF/Ontology#Alter> ?o.}");
 	}
 
 	/**
@@ -233,7 +228,8 @@ public class Facility extends ComparisonObject {
 	 * @return
 	 */
 	private String getGFZByDataset() {
-		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<"+this.getResourceUri()+"> <http://www.jade-hs.de/RDF/Ontology#hatBaulicheKennzahlen> ?z . ?z <http://www.jade-hs.de/RDF/Ontology#Grundflaechenzahl> ?o.}");
+		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatBaulicheKennzahlen> ?z . ?z <http://www.jade-hs.de/RDF/Ontology#Grundflaechenzahl> ?o.}");
 	}
 
 	/**
@@ -241,7 +237,8 @@ public class Facility extends ComparisonObject {
 	 * @return
 	 */
 	private String countFloorsByDataset() {
-		return executeQuery("SELECT (COUNT(?o) AS ?RESULT) WHERE {<"+this.getResourceUri()+"> <http://www.jade-hs.de/RDF/Ontology#hatEtage> ?o .}");
+		return executeQuery("SELECT (COUNT(?o) AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatEtage> ?o .}");
 	}
 
 	/**
@@ -249,7 +246,8 @@ public class Facility extends ComparisonObject {
 	 * @return
 	 */
 	private String countLivingAreasByDataset() {
-		return executeQuery(" SELECT (COUNT(?ge) AS ?RESULT) WHERE {<"+this.getResourceUri()+"> <http://www.jade-hs.de/RDF/Ontology#hatEtage> ?etage. "
+		return executeQuery(" SELECT (COUNT(?ge) AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatEtage> ?etage. "
 				+ "?etage <http://www.jade-hs.de/RDF/Ontology#hatGebaeudeeinheit> ?ge. "
 				+ "?ge a <http://www.jade-hs.de/RDF/Ontology#Wohneinheit> .}");
 	}
@@ -258,7 +256,8 @@ public class Facility extends ComparisonObject {
 	 * 
 	 */
 	private String countBusinessAreasByDataset() {
-		return executeQuery(" SELECT (COUNT(?ge) AS ?RESULT) WHERE {<"+this.getResourceUri()+"> <http://www.jade-hs.de/RDF/Ontology#hatEtage> ?etage. "
+		return executeQuery(" SELECT (COUNT(?ge) AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatEtage> ?etage. "
 				+ "?etage <http://www.jade-hs.de/RDF/Ontology#hatGebaeudeeinheit> ?ge. "
 				+ "?ge a <http://www.jade-hs.de/RDF/Ontology#Geschaeftseinheit> .}");
 	}

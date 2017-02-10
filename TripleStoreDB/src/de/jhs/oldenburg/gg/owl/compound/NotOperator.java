@@ -4,6 +4,10 @@ import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
 /**
  * 
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
  * @author Philipp Grashorn
  *
  */

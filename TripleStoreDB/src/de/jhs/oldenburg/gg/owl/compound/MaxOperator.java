@@ -2,6 +2,15 @@ package de.jhs.oldenburg.gg.owl.compound;
 
 import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
+/**
+ * 
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
+ *
+ */
 public class MaxOperator extends ComparisonCondition {
 
 	/**

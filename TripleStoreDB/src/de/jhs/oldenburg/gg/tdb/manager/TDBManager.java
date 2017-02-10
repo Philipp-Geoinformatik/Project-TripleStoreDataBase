@@ -28,7 +28,11 @@ import de.jhs.oldenburg.gg.tdb.utils.TDBPrinter;
 
 /**
  * 
- * @author Grashorn
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
  *
  */
 public class TDBManager implements ITDBManager {

@@ -9,6 +9,15 @@ import org.apache.jena.query.Dataset;
 import de.jhs.oldenburg.gg.owl.compound.CompoundNode;
 import de.jhs.oldenburg.gg.owl.compound.SimpleConditionLiteral;
 
+/**
+ * 
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
+ *
+ */
 public abstract class ComparisonObject {
 
 	private HashMap<String, String> properties;

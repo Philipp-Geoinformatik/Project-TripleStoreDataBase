@@ -24,10 +24,11 @@ import de.jhs.oldenburg.gg.requirement.Requirement;
 
 /**
  * 
- * @author Philipp Grashorn <br>
- *         From the master project of the Jade University of applied science:
- *         TripleStoreDB <br>
- *         Creation date: 06.01.2017
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
  *
  */
 public class OWLTDBManager {

@@ -8,11 +8,13 @@ import de.jhs.oldenburg.gg.owl.parser.ComparisonObject;
 
 /**
  * 
- * @author Philipp Grashorn <br>
- *         From the master project of the Jade University of applied science:
- *         TripleStoreDB <br>
- *         Creation date: 06.01.2017
+ * 
+ * 
+ * @author Fred Bohlmann
+ * @author Stefan Buescher
+ * @author Philipp Grashorn
  *
+ * The CompoundNode Class represents a Node of a common Graph. It contains a field of its origin node and its referenced so called child nodes.
  */
 public class CompoundNode {
 
