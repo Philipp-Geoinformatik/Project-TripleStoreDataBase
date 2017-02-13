@@ -197,7 +197,30 @@
     <!-- AnzahlPersonen  -->
     <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/AnzahlPersonen">
     </owl:Class>
-
+	<!-- Immobiliensart (neu)-->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobiliensart">
+    </owl:Class>
+	<!-- Mehrfamilienhaus (neu)-->
+	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus">
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+    </owl:Class>
+	<!-- Einfamilienhaus (neu)-->
+	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Einfamilienhaus">
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+    </owl:Class>
+	<!-- Ferienhaus (neu)-->
+	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Ferienhaus">
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+    </owl:Class>
+	<!-- Bordinghaus (neu)-->
+	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Bordinghaus">
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+    </owl:Class>
+	<!-- Wochenendhaus (neu)-->
+	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Wochenendhaus">
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+    </owl:Class>
+	
 
     <!-- PRAEDIKATE-->
     <!-- Antragssteller		hat				Immobilie -->
@@ -275,8 +298,22 @@
         <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer" />
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung" />
     </owl:ObjectProperty>
-
+	<!-- Imobilie 			ist				Immobiliensart(neu)-->
+	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/istWohnungsart">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilie" />
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+    </owl:ObjectProperty>
+	<!-- Imobilie 			wirdUnterstuetztVon	Foerderprogramm(neu)-->
+	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/wirdUnterstuetztVonFoerderprogramm">
+        <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilie" />
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Foerderprogramm" />
+    </owl:ObjectProperty>
+	
     <!-- EIGENSCHAFTEN -->
+	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/BauantragAlter">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
     <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/Alter">
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen" />
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
@@ -300,6 +337,11 @@
     <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/Baumassenzahl">
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen" />
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeFloat" />
+    </owl:ObjectProperty>
+	<!-- Eigenschaft Eigentumswohnung (neu)-->
+	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/Eigentumswohnung">
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit" />
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
     </owl:ObjectProperty>
     <!-- PersonelleKennzahlen-->
     <owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/AnzahlPersonen">

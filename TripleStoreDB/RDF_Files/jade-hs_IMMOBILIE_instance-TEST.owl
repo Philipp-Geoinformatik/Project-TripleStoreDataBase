@@ -20,14 +20,25 @@
         <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1" />
         <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2" />
         <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1" />
+		<jhs:istImmobiliensart rdf:resource="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus#Mehrfamilienhaus_1" />
+		<jhs:wirdUnterstuetztVonFoerderprogramm rdf:resource="http://www.jade-hs.de/RDF/Ontology/Foerderprogramm#Foerderprogramm_2" />
     </jhs:Immobilie>
-
+	
+	<!-- Mehrfamilienhaus  -->
+	<jhs:Mehrfamilienhaus rdf:about="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus#Mehrfamilienhaus_1"/>
+	
+	<!-- Foerderprogramm -->
+	<jhs:Foerderprogramm rdf:about="http://www.jade-hs.de/RDF/Ontology/Foerderprogramm#Foerderprogramm_2">
+		<jhs:Name rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Name#Name">Foerderprogramm152</jhs:Name>
+	</jhs:Foerderprogramm>
+	
     <!-- BaulicheKennzahlen  -->
     <jhs:BaulicheKennzahlen rdf:about="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1">
         <jhs:Alter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Alter#Alter">1917</jhs:Alter>
         <jhs:Name rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Name#Name">ciao</jhs:Name>
         <jhs:Grundflaechenzahl rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Grundflaechenzahl#Grundflaechenzahl">0.3</jhs:Grundflaechenzahl>
         <jhs:AnzahlGeschosse rdf:datatype="http://www.jade-hs.de/RDF/Ontology/AnzahlGeschosse#AnzahlGeschosse">2</jhs:AnzahlGeschosse>
+		<jhs:BauantragAlter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/BauantragAlter">1916</jhs:BauantragAlter>
     </jhs:BaulicheKennzahlen>
 
     <!-- Dach Satteldach -->
@@ -53,14 +64,19 @@
     
     <jhs:Geschaeftseinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Geschaeftseinheit#Geschaeftseinheit_1"/>
     
-    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2"/>
-    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_3"/>
-
+    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2">
+		<jhs:Eigentumswohnung rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Eigentumswohnung">false</jhs:Eigentumswohnung>
+	</jhs:Wohneinheit>
+    <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_3">
+		<jhs:Eigentumswohnung rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Eigentumswohnung">false</jhs:Eigentumswohnung>
+	</jhs:Wohneinheit>
+	
     <!-- Wohneinheit 1 -->
     <jhs:Wohneinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_1">
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_1" />
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_2" />
         <jhs:hatZimmer rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer#Zimmer_3" />
+		<jhs:Eigentumswohnung rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Eigentumswohnung">true</jhs:Eigentumswohnung>
     </jhs:Wohneinheit>
     <!--==================================================================== -->
     <!--==================================================================== -->

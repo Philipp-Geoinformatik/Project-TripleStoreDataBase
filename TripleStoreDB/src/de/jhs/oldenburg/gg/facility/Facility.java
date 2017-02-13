@@ -62,6 +62,10 @@ public class Facility extends ComparisonObject {
 			this.getProperties().put("GeschossAnzahl", countFloorsByDataset());
 			this.getProperties().put("WohneinheitenAnzahl", countLivingAreasByDataset());
 			this.getProperties().put("GeschaeftseinheitenAnzahl", countBusinessAreasByDataset());
+			this.getProperties().put("Dach",getRoofByDataset());
+			this.getProperties().put("Typ",getFacilityTypeByDataset());
+			this.getProperties().put("Unterstützung",getFacilityCurrentProgramByDataset());
+			this.getProperties().put("Bauantragsdatum",getDateOfBuildingApplicationByDataset());
 		} finally {
 			this.getDataset().end();
 		}
@@ -78,7 +82,7 @@ public class Facility extends ComparisonObject {
 	 * Function that creates the Literal as a String from a SPARQL request
 	 * 
 	 * @param queryString
-	 * @return
+	 * @return the Result-marked Object
 	 */
 	private String executeQuery(String queryString) {
 		if (this.getDataset().supportsTransactions()) {
@@ -99,8 +103,13 @@ public class Facility extends ComparisonObject {
 					if (o != null && o.isLiteral()) {
 						Literal literal = (Literal) o;
 						return literal.getString();
-					} else
+					} else if (o != null && o.isResource()) {
+						Resource res = (Resource) o;
+						return res.toString();
+					} else {
+						System.out.println(o.toString());
 						return null;
+					}
 				}
 				return null;
 			} catch (Exception e) {
@@ -112,9 +121,7 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * returns the age of the facility
-	 * 
-	 * @return
+	 * @return the age of the facility
 	 */
 	private String getFacilityAgeByNode() {
 		SimpleConditionLiteral cs = null;
@@ -133,9 +140,9 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * returns the GFZ of the facility
 	 * 
-	 * @return
+	 * 
+	 * @return returns the GFZ of the facility
 	 */
 	private String getGFZByNode() {
 		SimpleConditionLiteral cs = null;
@@ -154,9 +161,9 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * Counts the floors of the facility
 	 * 
-	 * @return
+	 * 
+	 * @return Counts the floors of the facility
 	 */
 	private String countFloorsByNode() {
 		String result = null;
@@ -173,9 +180,9 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * Counts the Living-Areas of the facility
 	 * 
-	 * @return
+	 * 
+	 * @return Counts the Living-Areas of the facility
 	 */
 	private String countLivingAreasByNode() {
 		String result = null;
@@ -195,7 +202,7 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * Counts the Business-Areas of the facility
+	 * @return Counts the Business-Areas of the facility
 	 */
 	private String countBusinessAreasByNode() {
 		String result = null;
@@ -215,9 +222,8 @@ public class Facility extends ComparisonObject {
 	}
 
 	/**
-	 * 
-	 * @return
-	 */
+	 * @return the Age of the Facility
+	 */ 
 	private String getFacilityAgeByDataset() {
 		return executeQuery("SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
 				+ "> <http://www.jade-hs.de/RDF/Ontology#hatBaulicheKennzahlen> ?z. ?z <http://www.jade-hs.de/RDF/Ontology#Alter> ?o.}");
@@ -225,7 +231,7 @@ public class Facility extends ComparisonObject {
 
 	/**
 	 * 
-	 * @return
+	 * @return 
 	 */
 	private String getGFZByDataset() {
 		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
@@ -261,4 +267,44 @@ public class Facility extends ComparisonObject {
 				+ "?etage <http://www.jade-hs.de/RDF/Ontology#hatGebaeudeeinheit> ?ge. "
 				+ "?ge a <http://www.jade-hs.de/RDF/Ontology#Geschaeftseinheit> .}");
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String getRoofByDataset() {
+		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatDach> ?o.}");
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String getFacilityTypeByDataset() {
+		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#istImmobiliensart> ?o. }");
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String getFacilityCurrentProgramByDataset() {
+		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#wirdUnterstuetztVonFoerderprogramm> ?z. "
+				+ " ?z <http://www.jade-hs.de/RDF/Ontology#Name> ?o.}");
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String getDateOfBuildingApplicationByDataset() {
+		return executeQuery(" SELECT (?o AS ?RESULT) WHERE {<" + this.getResourceUri()
+				+ "> <http://www.jade-hs.de/RDF/Ontology#hatBaulicheKennzahlen> ?z ."
+				+ " ?z <http://www.jade-hs.de/RDF/Ontology#BauantragAlter> ?o.}");
+	}
+ 
 }
+
