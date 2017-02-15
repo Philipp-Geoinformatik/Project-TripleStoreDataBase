@@ -64,15 +64,15 @@ public class OWLTDBManager {
 		System.out.println("////////////////////////////////////////////////////////////");
 		initDataset();
 		deleteModel();
-		// loadGraph(GRAPH_NAME, "I_AM_THE_CREATOR");
+		//loadGraph(GRAPH_NAME, "I_AM_THE_CREATOR");
 		// Voraussetzungen
 		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN.owl");
-		// createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance.owl");
-		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance-TEST.owl");
+		createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance.owl");
+		//createOntology("RDF_Files/jade-hs_VORAUSSETZUNGEN_instance-TEST.owl");
 
 		// Immobilien
 		createOntology("RDF_Files/jade-hs_IMMOBILIE.owl");
-		// createOntology("RDF_Files/jade-hs_IMMOBILIE_instance.owl");
+		//createOntology("RDF_Files/jade-hs_IMMOBILIE_instance.owl");
 		createOntology("RDF_Files/jade-hs_IMMOBILIE_instance-TEST.owl");
 
 		// Resolving

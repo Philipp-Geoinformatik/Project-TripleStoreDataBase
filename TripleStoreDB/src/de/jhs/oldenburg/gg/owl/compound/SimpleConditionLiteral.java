@@ -24,7 +24,7 @@ public class SimpleConditionLiteral extends CompoundNode {
 	@Override
 	public boolean resolve(CompoundNode cn) {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
-		System.out.println(this);
+		//System.out.println(this);
 		// search literal in the given tree cn
 		return compoundContains(literal, cn);
 	}
@@ -37,6 +37,8 @@ public class SimpleConditionLiteral extends CompoundNode {
 		System.out.println("<<<TRYING TO RESOLVE>>> ");
 		System.out.print(this);
 		String resUri = this.getParentNode().getResourceUri();
+		System.out.println(resUri.substring(resUri.lastIndexOf("#") + 1));
+		System.out.println(cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#"))));
 		System.out.println("Comparison: " + literal + "==" + cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#") + 1)) + "\n\n");
 		if (literal.equals(cpv.getProperties().get(resUri.substring(resUri.lastIndexOf("#") + 1))))
 			return true;

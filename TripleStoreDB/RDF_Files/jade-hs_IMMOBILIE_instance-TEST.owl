@@ -21,7 +21,7 @@
         <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2" />
         <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1" />
 		<jhs:istImmobiliensart rdf:resource="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus#Mehrfamilienhaus_1" />
-		<jhs:wirdUnterstuetztVonFoerderprogramm rdf:resource="http://www.jade-hs.de/RDF/Ontology/Foerderprogramm#Foerderprogramm_2" />
+		<!--<jhs:wirdUnterstuetztVonFoerderprogramm rdf:resource="http://www.jade-hs.de/RDF/Ontology/Foerderprogramm#Foerderprogramm_2" />-->
     </jhs:Immobilie>
 	
 	<!-- Mehrfamilienhaus  -->
@@ -34,11 +34,11 @@
 	
     <!-- BaulicheKennzahlen  -->
     <jhs:BaulicheKennzahlen rdf:about="http://www.jade-hs.de/RDF/Ontology/BaulicheKennzahlen#BaulicheKennzahlen_1">
-        <jhs:Alter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Alter#Alter">1917</jhs:Alter>
+        <jhs:Alter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Alter#Alter">01.04.1917</jhs:Alter>
         <jhs:Name rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Name#Name">ciao</jhs:Name>
         <jhs:Grundflaechenzahl rdf:datatype="http://www.jade-hs.de/RDF/Ontology/Grundflaechenzahl#Grundflaechenzahl">0.3</jhs:Grundflaechenzahl>
         <jhs:AnzahlGeschosse rdf:datatype="http://www.jade-hs.de/RDF/Ontology/AnzahlGeschosse#AnzahlGeschosse">2</jhs:AnzahlGeschosse>
-		<jhs:BauantragAlter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/BauantragAlter">1916</jhs:BauantragAlter>
+		<jhs:BauantragAlter rdf:datatype="http://www.jade-hs.de/RDF/Ontology/BauantragAlter">01.02.1916</jhs:BauantragAlter>
     </jhs:BaulicheKennzahlen>
 
     <!-- Dach Satteldach -->
@@ -59,7 +59,7 @@
     <!-- Etage 2 -->
     <jhs:Etage rdf:about="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2">
         <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_2" />
-        <jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_3" />
+        <!--<jhs:hatGebaeudeeinheit rdf:resource="http://www.jade-hs.de/RDF/Ontology/Wohneinheit#Wohneinheit_3" />-->
     </jhs:Etage>
     
     <jhs:Geschaeftseinheit rdf:about="http://www.jade-hs.de/RDF/Ontology/Geschaeftseinheit#Geschaeftseinheit_1"/>
