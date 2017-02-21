@@ -15,7 +15,7 @@ import de.jhs.oldenburg.gg.project.pattern.comparison.ComparisonObject;
  * @author Philipp Grashorn
  *
  */
-public class MinOperator extends ComparisonCondition {
+public class MinOperator extends CompoundNode {
 
 	public MinOperator(String resourceUri) {
 		super(resourceUri);
