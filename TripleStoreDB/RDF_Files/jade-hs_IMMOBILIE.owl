@@ -197,28 +197,28 @@
     <!-- AnzahlPersonen  -->
     <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/AnzahlPersonen">
     </owl:Class>
-	<!-- Immobiliensart (neu)-->
-    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobiliensart">
+	<!-- Immobilienart (neu)-->
+    <owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Immobilienart">
     </owl:Class>
 	<!-- Mehrfamilienhaus (neu)-->
 	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus">
-		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilienart" />
     </owl:Class>
 	<!-- Einfamilienhaus (neu)-->
 	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Einfamilienhaus">
-		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilienart" />
     </owl:Class>
 	<!-- Ferienhaus (neu)-->
 	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Ferienhaus">
-		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilienart" />
     </owl:Class>
 	<!-- Bordinghaus (neu)-->
 	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Bordinghaus">
-		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilienart" />
     </owl:Class>
 	<!-- Wochenendhaus (neu)-->
 	<owl:Class rdf:about="http://www.jade-hs.de/RDF/Ontology/Wochenendhaus">
-		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+		<rdfs:subClassOf rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilienart" />
     </owl:Class>
 	
 
@@ -298,10 +298,10 @@
         <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology/Zimmer" />
         <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung" />
     </owl:ObjectProperty>
-	<!-- Imobilie 			ist				Immobiliensart(neu)-->
+	<!-- Imobilie 			ist				Immobilienart(neu)-->
 	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/istWohnungsart">
         <rdfs:range rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilie" />
-        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobiliensart" />
+        <rdfs:domain rdf:resource="http://www.jade-hs.de/RDF/Ontology/Immobilienart" />
     </owl:ObjectProperty>
 	<!-- Imobilie 			wirdUnterstuetztVon	Foerderprogramm(neu)-->
 	<owl:ObjectProperty rdf:about="http://www.jade-hs.de/RDF/Ontology/wirdUnterstuetztVonFoerderprogramm">

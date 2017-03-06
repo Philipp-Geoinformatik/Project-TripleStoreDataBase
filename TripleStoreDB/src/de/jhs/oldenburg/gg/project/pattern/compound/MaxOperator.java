@@ -15,7 +15,7 @@ import de.jhs.oldenburg.gg.project.pattern.comparison.ComparisonObject;
  * @author Philipp Grashorn
  *
  */
-public class MaxOperator extends ComparisonCondition {
+public class MaxOperator extends CompoundNode {
 
 	/**
 	 * 

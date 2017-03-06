@@ -20,7 +20,7 @@
         <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_1" />
         <jhs:hatEtage rdf:resource="http://www.jade-hs.de/RDF/Ontology/Etage#Etage_2" />
         <jhs:hatHeizung rdf:resource="http://www.jade-hs.de/RDF/Ontology/Heizung#Heizung_1" />
-		<jhs:istImmobiliensart rdf:resource="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus#Mehrfamilienhaus_1" />
+		<jhs:istImmobilienart rdf:resource="http://www.jade-hs.de/RDF/Ontology/Mehrfamilienhaus#Mehrfamilienhaus_1" />
 		<!--<jhs:wirdUnterstuetztVonFoerderprogramm rdf:resource="http://www.jade-hs.de/RDF/Ontology/Foerderprogramm#Foerderprogramm_2" />-->
     </jhs:Immobilie>
 	

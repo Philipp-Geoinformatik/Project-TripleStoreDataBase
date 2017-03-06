@@ -72,7 +72,7 @@ public class MyRDFBuilder {
 		return model;
 	}
 
-	public void wirteIntoTDBDataSet() {
+	public void writeIntoTDBDataSet() {
 		Dataset dataset = TDBFactory.createDataset("Dataset1");
 		dataset.begin(ReadWrite.WRITE);
 		try {
@@ -134,7 +134,7 @@ public class MyRDFBuilder {
 	public static void main(String[] args) {
 
 		MyRDFBuilder my = new MyRDFBuilder();
-		my.wirteIntoTDBDataSet();
+		my.writeIntoTDBDataSet();
 		// Model myRDFModel = my.createRDF();
 		// writing file to specific directory
 		// my.writeRDFModel(myRDFModel, "", "my_rdf.xml", "utf-8");
