@@ -75,25 +75,26 @@ public class Start {
 		//TDBPrinter.printCONSTRUCT(dataset);
 		TDBPrinter.printDESCRIBE(dataset);
 		//TDBPrinter.printSELECT("SELECT * WHERE { ?s ?p ?o}",  dataset);
-//		// Resolving
-//		CompoundResolver solver = new CompoundResolver(dataset);
-//		String nameSpace = "http://www.jade-hs.de/RDF/Ontology";
-//		// Printing all CompoundNodes
-//		CompoundNode vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
-//		CompoundNode immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
-//		//String query = "";
-//		//query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
-//		Facility facility = new Facility("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1",dataset);
-//		Requirement requirement = new Requirement(vorraussetzung);
-//		FacilityEvaluator.evaluate(requirement.getRootNode(), facility);
-//		//FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
+		// Resolving
+		CompoundResolver solver = new CompoundResolver(dataset);
+		String nameSpace = "http://www.jade-hs.de/RDF/Ontology";
+		// Printing all CompoundNodes
+		CompoundNode vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
+		CompoundNode immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
+		//String query = "";
+		//query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
+		Facility facility = new Facility("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1",dataset);
+		Requirement requirement = new Requirement(vorraussetzung);
+		FacilityEvaluator.evaluate(requirement.getRootNode(), facility);
+		//FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
 	}
 
 	/**
 	 * Initialize the default graph database.
 	 */
 	public void initDataset() {
-		String datasetLocation = "OWLDataBase";
+		String home = System.getProperty("user.home");
+		String datasetLocation = home +"/OWLDataBase";
 		String datasetName = "myOWLTDB";
 
 		String dir = datasetLocation + "/" + datasetName;
