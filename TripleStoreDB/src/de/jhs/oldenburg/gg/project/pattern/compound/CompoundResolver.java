@@ -94,6 +94,7 @@ public class CompoundResolver {
 	 */
 	private ArrayList<CompoundNode> getCompoundNodesByNameSpace(CompoundNode parentNode, String nameSpace) {
 		ArrayList<CompoundNode> childNodes = new ArrayList<>();
+		//extract all Predicates of Resource
 		ArrayList<String> predicates = getAllPredicatesOfNode(parentNode.getResourceUri(), nameSpace);
 		try {
 			dataset.begin(ReadWrite.READ);

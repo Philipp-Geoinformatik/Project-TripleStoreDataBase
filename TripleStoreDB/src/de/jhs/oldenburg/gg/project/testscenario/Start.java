@@ -18,6 +18,7 @@ import org.apache.jena.vocabulary.RDF;
 import de.jhs.oldenburg.gg.project.pattern.comparison.ComparisonObject;
 import de.jhs.oldenburg.gg.project.pattern.compound.CompoundNode;
 import de.jhs.oldenburg.gg.project.pattern.compound.CompoundResolver;
+import de.jhs.oldenburg.gg.project.utils.TDBPrinter;
 
 /**
  * 
@@ -71,19 +72,21 @@ public class Start {
 		createOntology("RDF_Files/jade-hs_IMMOBILIE.owl");
 		//createOntology("RDF_Files/jade-hs_IMMOBILIE_instance.owl");
 		createOntology("RDF_Files/jade-hs_IMMOBILIE_instance-TEST.owl");
-
-		// Resolving
-		CompoundResolver solver = new CompoundResolver(dataset);
-		String nameSpace = "http://www.jade-hs.de/RDF/Ontology";
-		// Printing all CompoundNodes
-		CompoundNode vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
-		CompoundNode immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
-		//String query = "";
-		//query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
-		Facility facility = new Facility("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1",dataset);
-		Requirement requirement = new Requirement(vorraussetzung);
-		FacilityEvaluator.evaluate(requirement.getRootNode(), facility);
-		//FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
+		//TDBPrinter.printCONSTRUCT(dataset);
+		TDBPrinter.printDESCRIBE(dataset);
+		//TDBPrinter.printSELECT("SELECT * WHERE { ?s ?p ?o}",  dataset);
+//		// Resolving
+//		CompoundResolver solver = new CompoundResolver(dataset);
+//		String nameSpace = "http://www.jade-hs.de/RDF/Ontology";
+//		// Printing all CompoundNodes
+//		CompoundNode vorraussetzung = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Voraussetzung#Voraussetzung_1", nameSpace);// .forEach(System.out::println)
+//		CompoundNode immobilie = solver.resolveCompound("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1", nameSpace);// .forEach(System.out::println)
+//		//String query = "";
+//		//query += " SELECT DISTINCT ?o ?p  WHERE {<http://www.jade-hs.de/RDF/Ontology/Fenster#Fenster_1> <http://www.jade-hs.de/RDF/Ontology#Alter> ?o .}";
+//		Facility facility = new Facility("http://www.jade-hs.de/RDF/Ontology/Immobilie#Immobilie_1",dataset);
+//		Requirement requirement = new Requirement(vorraussetzung);
+//		FacilityEvaluator.evaluate(requirement.getRootNode(), facility);
+//		//FacilityEvaluator.evaluate(vorraussetzung.get(0), immobilie.get(0));
 	}
 
 	/**
@@ -126,6 +129,7 @@ public class Start {
 		// create the reasoning model using the base
 		OntModel inf = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, base);
 		base.read(source, "RDF/XML");
+		//dataset.addNamedModel("name", inf);
 		dataset.getDefaultModel().add(inf);
 	}
 
